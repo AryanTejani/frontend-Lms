@@ -13,7 +13,6 @@ export function useCheckout() {
   } = useQuery({
     queryKey: ['plans'],
     queryFn: getPlans,
-    select: (data) => data.filter((p) => p.stripe_price_id !== null),
   });
 
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);

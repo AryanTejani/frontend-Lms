@@ -12,11 +12,13 @@ interface ReadAloudButtonProps {
   text: string;
   lang?: string;
   className?: string;
+  showGenderToggle?: boolean;
 }
 
-export function ReadAloudButton({ text, lang, className }: ReadAloudButtonProps) {
+export function ReadAloudButton({ text, lang, className, showGenderToggle = true }: ReadAloudButtonProps) {
   const { isSpeaking, isLoading, speak, stop } = useSpeech();
   const gender = useTtsStore((s) => s.gender);
+  const setGender = useTtsStore((s) => s.setGender);
 
   const plainText = stripHtmlTags(text).slice(0, 5000);
 
@@ -30,7 +32,7 @@ export function ReadAloudButton({ text, lang, className }: ReadAloudButtonProps)
     }
   };
 
-  return (
+  const readAloudBtn = (
     <button
       type="button"
       onClick={handleClick}
@@ -47,5 +49,22 @@ export function ReadAloudButton({ text, lang, className }: ReadAloudButtonProps)
         {isLoading ? 'Loading...' : isSpeaking ? 'Stop' : 'Read Aloud'}
       </span>
     </button>
+  );
+
+  if (!showGenderToggle) return readAloudBtn;
+
+  return (
+    <div className="flex items-center gap-(--space-xs2)">
+      {readAloudBtn}
+      <button
+        type="button"
+        onClick={() => setGender(gender === 'female' ? 'male' : 'female')}
+        className="flex items-center gap-(--space-xs2) px-(--space-sm) py-(--space-xs2) rounded-full bg-(--color-bg-secondary) border border-(--color-bg-tertiary) cursor-pointer text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
+        aria-label={`Voice: ${gender}. Click to switch.`}
+      >
+        <VolumeUpIcon className="icon-xs" />
+        <span className="label-3 label-3-medium capitalize">{gender}</span>
+      </button>
+    </div>
   );
 }

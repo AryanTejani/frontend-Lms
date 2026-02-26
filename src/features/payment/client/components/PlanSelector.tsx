@@ -10,7 +10,7 @@ interface PlanSelectorProps {
 }
 
 function formatPrice(amountCents: number): string {
-  return `$${(amountCents / 100).toFixed(0)}`;
+  return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(amountCents / 100);
 }
 
 function getIntervalLabel(plan: Plan): string {

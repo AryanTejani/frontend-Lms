@@ -11,7 +11,7 @@ export const mockSubscription: Subscription = {
   description: 'Full access to all courses and features',
   billingCycle: 'Monthly',
   nextBillingDate: 'January 15, 2025',
-  amount: '$99/month',
+  amount: '₹99/month',
   status: 'active',
 };
 

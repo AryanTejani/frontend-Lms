@@ -6,10 +6,10 @@ export function TestimonialCard() {
       <FormatQuoteIcon className="size-6 text-(--color-text-tertiary)" />
 
       <p className="label-1 label-1-regular text-(--color-text-secondary) leading-relaxed">
-        This platform is so good! It seems like a steal for the money.
+        VidyaSetu helped me prepare for my board exams with clear explanations in Hindi. The NCERT video lessons are amazing!
       </p>
 
-      <span className="label-2 label-2-semibold text-(--color-text-primary)">JoelTCampbellJr</span>
+      <span className="label-2 label-2-semibold text-(--color-text-primary)">Priya Sharma</span>
     </div>
   );
 }
