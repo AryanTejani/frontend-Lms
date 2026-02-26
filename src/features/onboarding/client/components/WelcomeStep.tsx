@@ -15,12 +15,12 @@ export function WelcomeStep({ onContinue }: WelcomeStepProps) {
     <div className="flex flex-col items-center gap-12 max-w-[895px] mx-auto flex-1 justify-center px-(--space-base)">
       {/* Header group */}
       <div className="flex flex-col items-center gap-[11px]">
-        <Image src={logo} alt="TraderLion" width={108} height={108} className="object-contain" />
+        <Image src={logo} alt="VidyaSetu" width={108} height={108} className="object-contain" />
         <h2 className="h2 h2-semibold text-(--color-text-primary) text-center">
-          Welcome to TraderLion
+          Welcome to VidyaSetu
         </h2>
         <p className="text-[18px] leading-7 text-(--color-text-secondary) text-center max-w-[400px]">
-          Your journey to becoming a confident trader starts here
+          Learn any subject in your mother tongue, at your own pace
         </p>
       </div>
 
@@ -40,12 +40,12 @@ export function WelcomeStep({ onContinue }: WelcomeStepProps) {
           />
           <OnboardingFeatureCard
             icon={<VideosIcon className="w-5 h-5 text-(--color-text-secondary)" />}
-            label="Expert trading strategies"
+            label="Learn in your language"
             className="flex-1"
           />
           <OnboardingFeatureCard
             icon={<AIIcon className="w-5 h-5 text-(--color-text-secondary)" />}
-            label="Expert trading strategies"
+            label="Voice-first AI tutor"
             className="flex-1"
           />
         </div>

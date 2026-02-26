@@ -5,49 +5,49 @@ export interface ProfileData {
 }
 
 export const GPT_PROFILES: Record<string, ProfileData> = {
-  'Swing Trading Mastery': {
+  'Science Tutor': {
     description:
-      'An expert GPT focused on swing trading strategies, helping you identify optimal entry and exit points over multi-day to multi-week timeframes.',
+      'Explains biology, physics, and chemistry using farm and village examples that rural students can relate to.',
     features: [
-      { text: 'Identify high-probability swing setups using technical analysis' },
-      { text: 'Risk management and position sizing guidance' },
-      { text: 'Multi-timeframe chart analysis for swing trades' },
-      { text: 'Actionable trade plans with clear stop-loss levels' },
+      { text: 'Biology concepts explained with local plant and animal examples' },
+      { text: 'Physics principles demonstrated through everyday objects' },
+      { text: 'Chemistry basics with simple experiments you can do at home' },
+      { text: 'NCERT Class 5-8 syllabus coverage' },
     ],
-    relatedCourse: { label: 'Swing Trading Masterclass' },
+    relatedCourse: { label: 'Science for Class 5' },
   },
-  'Trading Psychology': {
+  'Maths Helper': {
     description:
-      'A specialized GPT designed to help traders manage emotions, build discipline, and develop the mental edge needed for consistent profitability.',
+      'Makes arithmetic, fractions, and geometry simple using daily life problems from rural contexts.',
     features: [
-      { text: 'Overcome fear and greed in trading decisions' },
-      { text: 'Build a disciplined trading routine' },
-      { text: 'Journaling techniques for performance review' },
-      { text: 'Cognitive bias awareness and mitigation' },
+      { text: 'Fractions and decimals explained with real market examples' },
+      { text: 'Geometry using shapes from nature and buildings' },
+      { text: 'Mental math tricks for quick calculations' },
+      { text: 'NCERT Maths syllabus for Class 1-8' },
     ],
-    relatedCourse: { label: 'Mastering Trading Psychology' },
+    relatedCourse: { label: 'Maths Foundations' },
   },
-  'Stage Analysis': {
+  'Language Guide': {
     description:
-      "A GPT trained in Stan Weinstein's Stage Analysis methodology, helping you identify the current stage of any stock and time your entries and exits accordingly.",
+      'Teaches reading and writing in Hindi, Tamil, Telugu, and Marathi with fun stories and exercises.',
     features: [
-      { text: 'Identify Stage 1 through Stage 4 characteristics' },
-      { text: 'Volume analysis to confirm stage transitions' },
-      { text: 'Moving average framework for stage identification' },
-      { text: 'Sector and market-wide stage assessment' },
+      { text: 'Reading comprehension with local folk tales' },
+      { text: 'Writing practice with guided prompts' },
+      { text: 'Grammar rules explained simply in your mother tongue' },
+      { text: 'Vocabulary building through everyday words' },
     ],
-    relatedCourse: { label: 'Stage Analysis Course' },
+    relatedCourse: { label: 'Hindi Reading' },
   },
-  'High Tight Flag': {
+  'History & Civics': {
     description:
-      'A pattern-recognition GPT specializing in the High Tight Flag setup — one of the most powerful and rare chart patterns that can lead to explosive moves.',
+      "India's history, geography, and civics explained in simple language for every student.",
     features: [
-      { text: 'Criteria for valid High Tight Flag patterns' },
-      { text: 'Volume and price action confirmation signals' },
-      { text: 'Historical examples and success rates' },
-      { text: 'Entry, stop-loss, and target strategies' },
+      { text: "Indian history from ancient times to India's independence" },
+      { text: 'Geography of India — rivers, mountains, states' },
+      { text: 'Civics — how government works, your rights and duties' },
+      { text: 'NCERT Social Studies for Class 3-8' },
     ],
-    relatedCourse: { label: 'Chart Pattern Mastery' },
+    relatedCourse: { label: 'Social Studies Class 5' },
   },
 };
 
@@ -58,32 +58,32 @@ export interface MentorProfileData {
 }
 
 export const MENTOR_PROFILES: Record<string, MentorProfileData> = {
-  "William O'Neil": {
-    specialty: 'Growth Investing',
+  'Science AI': {
+    specialty: 'Biology, Physics, Chemistry',
     about:
-      'Pioneer of the CAN SLIM methodology, combining fundamental and technical analysis to identify high-growth stocks before they make their biggest moves.',
+      'Explains science through rural India examples — from how plants grow in fields to why the sky changes color at sunset.',
     achievements:
-      "Winner of the U.S. Investing Championship, founder of Investor's Business Daily, and author of 'How to Make Money in Stocks' — one of the best-selling investment books of all time.",
+      'Covers full NCERT Science curriculum for Class 1-8 in Hindi, Tamil, Telugu, Marathi, Kannada, and Bengali.',
   },
-  'Stan Weinstein': {
-    specialty: 'Stage Analysis',
+  'Maths AI': {
+    specialty: 'Arithmetic, Geometry, Fractions',
     about:
-      "Developer of the stage analysis approach to investing, providing a clear framework for identifying the four stages of a stock's lifecycle and timing entries during Stage 2 advances.",
+      'Makes maths simple with daily life problems — from counting crops to measuring land and calculating prices at the market.',
     achievements:
-      "Legendary market technician, author of 'Secrets for Profiting in Bull and Bear Markets', and editor of The Professional Tape Reader newsletter for over two decades.",
+      'Covers full NCERT Mathematics curriculum for Class 1-8 with step-by-step solutions in your language.',
   },
-  'Mark Minervini': {
-    specialty: 'Momentum Trading',
+  'Language AI': {
+    specialty: 'Reading, Writing, Grammar',
     about:
-      'Creator of the Specific Entry Point Analysis (SEPA) methodology, combining precise entry timing with strict risk management to achieve superperformance returns.',
+      'Teaches in your mother tongue using folk tales, poems, and stories from across India to build strong reading and writing skills.',
     achievements:
-      "Two-time U.S. Investing Championship winner with a 155% annual return, author of 'Trade Like a Stock Market Wizard', and featured in Jack Schwager's 'Stock Market Wizards'.",
+      'Supports Hindi, Tamil, Telugu, Marathi, Kannada, and Bengali with NCERT Language curriculum for Class 1-8.',
   },
-  'Linda Raschke': {
-    specialty: 'Short-term Trading',
+  'Social AI': {
+    specialty: 'History, Geography, Civics',
     about:
-      'Renowned short-term trader specializing in momentum, mean-reversion, and pattern recognition strategies across futures and equities markets.',
+      "India's story told for every student — from ancient civilizations to modern democracy, from Himalayan peaks to coastal plains.",
     achievements:
-      "Inducted into the CTA Hall of Fame, co-author of 'Street Smarts' with Laurence Connors, and featured in Jack Schwager's 'The New Market Wizards'.",
+      'Covers NCERT Social Studies for Class 3-8, including History, Geography, and Civics in simple language.',
   },
 };

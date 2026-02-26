@@ -3,7 +3,7 @@ import { PaymentView } from '@/features/payment';
 
 export const metadata: Metadata = {
   title: 'Payment',
-  description: 'Complete your TraderLion subscription.',
+  description: 'Complete your VidyaSetu subscription.',
 };
 
 export default function PaymentPage() {

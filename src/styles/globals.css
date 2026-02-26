@@ -95,21 +95,21 @@
      ---------------------------------------- */
 
   /* Primary & Accent */
-  --color-primary-accent: #3b4cca;
+  --color-primary-accent: #1E3A5F;
   --color-secondary-accent: #ffffff;
 
   /* Stroke Colors */
   --color-stroke-primary: #6b7280;
-  --color-stroke-secondary: #6e81c4;
+  --color-stroke-secondary: #3B6E8C;
   --color-stroke-tertiary: #d1d5db;
   --color-stroke-error: #dc3545;
   --color-stroke-success: #059669;
-  --color-stroke-selection: #3b4cca;
-  --color-stroke-active: #99b2ff;
+  --color-stroke-selection: #1E3A5F;
+  --color-stroke-active: #7FA8C9;
 
   /* Action Colors */
-  --color-action-primary: #3b4cca;
-  --color-action-secondary: #7691f8;
+  --color-action-primary: #1E3A5F;
+  --color-action-secondary: #2ECC71;
 
   /* Misc */
   --color-icons: #1f2937;
@@ -121,17 +121,17 @@
   --color-bg-primary: #ffffff;
   --color-bg-secondary: #f3f4f6;
   --color-bg-tertiary: #d1d5db;
-  --color-bg-active: #ebf1ff;
+  --color-bg-active: #E8F4F8;
   --color-bg-inactive: #f9fafb;
   --color-bg-overlay: rgba(26, 26, 26, 0.2);
-  --color-bg-opaque: rgba(118, 145, 248, 0.2);
+  --color-bg-opaque: rgba(30, 58, 95, 0.2);
 
   /* Text Colors */
   --color-text-inverse: #ffffff;
-  --color-text-primary: #111827;
+  --color-text-primary: #333333;
   --color-text-secondary: #4b5563;
   --color-text-tertiary: #6b7280;
-  --color-text-link: #3b4cca;
+  --color-text-link: #1E3A5F;
   --color-text-success: #06a26e;
   --color-text-error: #dc3545;
   --color-text-warning: #dc3545;
@@ -139,15 +139,15 @@
   --color-text-placeholder: rgba(26, 26, 26, 0.2);
 
   /* Action State Colors */
-  --color-action-disabled: #7691f8;
-  --color-action-hover: rgba(59, 76, 202, 0.9);
+  --color-action-disabled: #7DC99A;
+  --color-action-hover: rgba(30, 58, 95, 0.9);
 
   /* Error/Success Backgrounds */
   --color-bg-error: rgba(239, 68, 69, 0.05);
   --color-bg-success: rgba(5, 150, 105, 0.05);
 
   /* Primary RGB (for gradient alpha control) */
-  --color-primary-rgb: 59, 76, 202;
+  --color-primary-rgb: 30, 58, 95;
 
   /* ----------------------------------------
      Tailwind Color Primitives
@@ -439,18 +439,18 @@
   --color-rose-900: #881337;
   --color-rose-950: #4c0519;
 
-  /* Light mode Blue — Brand blue palette, light theme */
-  --color-light-blue-50: #ebf1ff;
-  --color-light-blue-100: #bdd0ff;
-  --color-light-blue-200: #99b2ff;
-  --color-light-blue-300: #7691f8;
-  --color-light-blue-400: #6e81c4;
-  --color-light-blue-500: #3b4cca;
-  --color-light-blue-600: #3b4cca;
-  --color-light-blue-700: #2e3ca3;
-  --color-light-blue-800: #252f5c;
-  --color-light-blue-900: #1d2542;
-  --color-light-blue-950: #070047;
+  /* Light mode Blue — VidyaSetu blue palette, light theme */
+  --color-light-blue-50: #E8F4F8;
+  --color-light-blue-100: #C5DCE8;
+  --color-light-blue-200: #9DC2D5;
+  --color-light-blue-300: #7FA8C9;
+  --color-light-blue-400: #5B8EBD;
+  --color-light-blue-500: #3B6E9A;
+  --color-light-blue-600: #2E5A8E;
+  --color-light-blue-700: #1E3A5F;
+  --color-light-blue-800: #162C4A;
+  --color-light-blue-900: #0E2035;
+  --color-light-blue-950: #0D1F35;
 
   /* Dark mode Blue — Brand blue palette, dark theme */
   --color-dark-blue-50: #151c31;
@@ -944,7 +944,7 @@ h6:not(.prose *), .h6 {
 .dark,
 :root.dark {
   /* Primary & Accent */
-  --color-primary-accent: #5b6fe8;
+  --color-primary-accent: #2E5A8E;
   --color-secondary-accent: #ffffff;
 
   /* Stroke Colors */
@@ -953,12 +953,12 @@ h6:not(.prose *), .h6 {
   --color-stroke-tertiary: #20294e;
   --color-stroke-error: #ef4444;
   --color-stroke-success: #34d399;
-  --color-stroke-selection: #5b6fe8;
-  --color-stroke-active: #2f3b74;
+  --color-stroke-selection: #2E5A8E;
+  --color-stroke-active: #1A3A5C;
 
   /* Action Colors */
-  --color-action-primary: #5b6fe8;
-  --color-action-secondary: #2f3b74;
+  --color-action-primary: #2E5A8E;
+  --color-action-secondary: #27AE60;
 
   /* Misc */
   --color-icons: #e5e7eb;
@@ -967,20 +967,20 @@ h6:not(.prose *), .h6 {
   --color-misc-inverse: #1f2937;
 
   /* Background Colors */
-  --color-bg-primary: #111827;
-  --color-bg-secondary: #151c31;
-  --color-bg-tertiary: #18213a;
-  --color-bg-active: #273261;
-  --color-bg-inactive: #18213a;
+  --color-bg-primary: #1A1A2E;
+  --color-bg-secondary: #16213E;
+  --color-bg-tertiary: #1A2744;
+  --color-bg-active: #1B3A5C;
+  --color-bg-inactive: #1A2744;
   --color-bg-overlay: rgba(255, 255, 255, 0.2);
-  --color-bg-opaque: rgba(91, 111, 232, 0.2);
+  --color-bg-opaque: rgba(46, 90, 142, 0.2);
 
   /* Text Colors */
   --color-text-inverse: #111827;
   --color-text-primary: #ffffff;
   --color-text-secondary: #9ca3af;
   --color-text-tertiary: #d1d5db;
-  --color-text-link: #5b6fe8;
+  --color-text-link: #4A8FBF;
   --color-text-success: #34d399;
   --color-text-error: #ef4444;
   --color-text-warning: #ef4444;
@@ -988,15 +988,15 @@ h6:not(.prose *), .h6 {
   --color-text-placeholder: rgba(255, 255, 255, 0.3);
 
   /* Action State Colors */
-  --color-action-disabled: #4a5a9c;
-  --color-action-hover: rgba(91, 111, 232, 0.9);
+  --color-action-disabled: #3D8B5E;
+  --color-action-hover: rgba(46, 90, 142, 0.9);
 
   /* Error/Success Backgrounds */
   --color-bg-error: rgba(239, 68, 69, 0.15);
   --color-bg-success: rgba(52, 211, 153, 0.15);
 
   /* Primary RGB (for gradient alpha control) */
-  --color-primary-rgb: 91, 111, 232;
+  --color-primary-rgb: 46, 90, 142;
 
   /* Shadows */
   --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);

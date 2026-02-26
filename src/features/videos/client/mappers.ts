@@ -16,7 +16,7 @@ function formatDate(dateStr: string): string {
 
 function getInstructorName(video: VideoRecord): string {
   if (!video.instructor) {
-    return 'TraderLion';
+    return 'VidyaSetu';
   }
 
   const first = video.instructor.first_name ?? '';

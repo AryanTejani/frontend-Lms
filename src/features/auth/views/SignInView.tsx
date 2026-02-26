@@ -12,7 +12,7 @@ export function SignInView() {
           <div className="w-full bg-(--color-bg-primary) rounded-card shadow-md p-(--space-2xl)">
             <div className="flex flex-col items-center mb-(--space-lg)">
               <h5 className="h5-semibold text-(--color-text-primary) text-center">
-                Sign in to TraderLion
+                Sign in to VidyaSetu
               </h5>
             </div>
 

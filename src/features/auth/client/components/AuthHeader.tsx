@@ -13,13 +13,13 @@ export function AuthHeader({ showSignIn = false, showSignUp = false }: AuthHeade
       <Link href={paths.auth.signUp} className="flex items-center gap-(--space-xs) no-underline">
         <Image
           src="/logo.png"
-          alt="TraderLion"
+          alt="VidyaSetu"
           width={48}
           height={48}
           className="size-logo object-contain"
           priority
         />
-        <span className="h6-semibold text-(--color-text-primary)">TraderLion</span>
+        <span className="h6-semibold text-(--color-text-primary)">VidyaSetu</span>
       </Link>
 
       {showSignIn && (

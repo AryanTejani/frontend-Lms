@@ -13,35 +13,23 @@ interface MessageGroup {
 
 const STATIC_MESSAGES: MessageGroup[] = [
   {
-    userMessage: 'Tell me about can slim methodology',
-    aiResponse: `CAN SLIM is a growth stock investment strategy developed by William J. O'Neil, founder of Investor's Business Daily (IBD). It is a systematic approach to selecting stocks based on both fundamental and technical criteria. The acronym CAN SLIM stands for:
+    userMessage: 'What is photosynthesis?',
+    aiResponse: `Photosynthesis is the process by which plants make their own food using sunlight, water, and air.
 
-C – Current Quarterly Earnings: Look for companies with significant earnings growth in the most recent quarter compared to the same quarter a year ago.
+Think of it like this — imagine a mango tree in your village. Every day, the tree's leaves catch sunlight like tiny solar panels. At the same time, the roots pull up water from the soil, and tiny holes in the leaves (called stomata) take in air.
 
-A – Annual Earnings Growth: Seek companies with strong annual earnings growth over the past five years.
+Inside the leaf, the green color (called chlorophyll) uses the sunlight's energy to mix the water and air together. This creates sugar — which is the tree's food — and releases fresh oxygen into the air for us to breathe!
 
-N – New Products, Management, or Price Highs: Favor companies with new innovations, leadership, or stocks reaching new price highs.
+The simple formula is:
+Sunlight + Water + Carbon Dioxide → Sugar (food for plant) + Oxygen
 
-S – Supply and Demand: Consider stocks with lower share counts or strong trading volume increases as a sign of demand.
+So every time you sit under a tree and feel cool, remember — the tree is busy making its own food and giving you fresh air at the same time!
 
-L – Leader or Laggard: Focus on market leaders in strong industries, not laggards.
-
-I – Institutional Sponsorship: Prefer stocks with increasing ownership by mutual funds and institutional investors.
-
-M – Market Direction: Pay attention to the overall market trend, as most stocks follow the general market direction.`,
-  },
-  {
-    userMessage: 'What are the key features of CAN SLIM methodology?',
-    aiResponse: `Key Features:
-
-1. Combines fundamental analysis (earnings, revenue) with technical analysis (chart patterns, volume).
-2. Emphasizes buying stocks at the right time, particularly as they break out of sound base patterns.
-3. Includes strict sell rules and risk management to protect gains and limit losses (typically selling if a stock drops 7-8% below the purchase price).
-4. Uses market timing by evaluating the general market direction before making individual stock trades.
-
-How Investors Use CAN SLIM:
-
-Investors screen for stocks meeting all seven CAN SLIM criteria, use chart analysis to time their entries, and follow disciplined sell rules to manage risk. The strategy is particularly effective in bull markets and focuses on identifying potential market leaders before they make major price advances.`,
+Key points to remember:
+1. Plants need sunlight, water, and carbon dioxide for photosynthesis
+2. Chlorophyll (the green pigment) captures sunlight
+3. Food is made as glucose (sugar)
+4. Oxygen is released as a by-product — the air we breathe`,
   },
 ];
 
@@ -120,7 +108,7 @@ export function ChatView() {
       <div className="shrink-0 max-w-[800px] mx-auto w-full px-(--space-base) pb-(--space-lg) pt-(--space-sm)">
         <Chatbox
           variant="compact"
-          placeholder="Ask about strategies, risk management, chart patterns..."
+          placeholder="Ask your question in any language..."
         />
       </div>
     </div>

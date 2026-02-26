@@ -26,8 +26,8 @@ export function StyleStep({ selected, onSelect, onNext, onBack }: StyleStepProps
 
       <div className="w-full mt-(--space-lg)">
         <OnboardingQuestion
-          title="What's your trading style?"
-          subtitle="Choose the style that fits you best"
+          title="Which class are you in?"
+          subtitle="We'll show NCERT curriculum for your grade"
         />
       </div>
 

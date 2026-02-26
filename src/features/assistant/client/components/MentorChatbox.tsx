@@ -20,7 +20,7 @@ export function MentorChatbox({
   icon,
   profileHref,
   onViewProfile,
-  placeholder = 'Ask about strategies, risk management, chart patterns...',
+  placeholder = 'Ask your question in any language...',
   suggestions = [],
   onSubmit,
   onSuggestionClick,

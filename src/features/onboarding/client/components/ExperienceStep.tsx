@@ -25,8 +25,8 @@ export function ExperienceStep({ selected, onSelect, onNext }: ExperienceStepPro
 
       <div className="w-full mt-(--space-lg)">
         <OnboardingQuestion
-          title="What's your trading experience level?"
-          subtitle="Help us customize your learning path"
+          title="Which language do you prefer to learn in?"
+          subtitle="We'll teach every subject in your chosen language"
         />
       </div>
 
@@ -50,7 +50,7 @@ export function ExperienceStep({ selected, onSelect, onNext }: ExperienceStepPro
       </div>
 
       <div className="mt-(--space-sm)">
-        <OnboardingInfoLabel>You can always adjust your learning path later</OnboardingInfoLabel>
+        <OnboardingInfoLabel>You can always change your language later</OnboardingInfoLabel>
       </div>
     </div>
   );

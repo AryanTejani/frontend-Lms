@@ -1,8 +1,8 @@
 export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold">TraderLion</h1>
-      <p className="mt-4 text-lg text-gray-600">Welcome to TraderLion Platform</p>
+      <h1 className="text-4xl font-bold">VidyaSetu</h1>
+      <p className="mt-4 text-lg text-gray-600">Multilingual Learning Portal for Rural India</p>
     </main>
   );
 }

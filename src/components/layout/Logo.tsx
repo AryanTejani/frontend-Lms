@@ -11,13 +11,13 @@ export function Logo({ showText = true }: LogoProps) {
     <Link href={paths.dashboard} className="flex items-center gap-(--space-xs) no-underline">
       <Image
         src="/logo.png"
-        alt="TraderLion"
+        alt="VidyaSetu"
         width={48}
         height={48}
         className="size-logo object-contain"
         priority
       />
-      {showText && <span className="h6-semibold text-(--color-text-primary)">TraderLion</span>}
+      {showText && <span className="h6-semibold text-(--color-text-primary)">VidyaSetu</span>}
     </Link>
   );
 }

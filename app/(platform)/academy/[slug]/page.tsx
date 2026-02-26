@@ -19,7 +19,7 @@ import type { LessonRecord } from '@/features/academy/types';
 function getInstructorName(course: {
   instructor?: { first_name: string | null; last_name: string | null; email: string } | null;
 }): string {
-  if (!course.instructor) return 'TraderLion';
+  if (!course.instructor) return 'VidyaSetu';
   const first = course.instructor.first_name ?? '';
   const last = course.instructor.last_name ?? '';
   const name = `${first} ${last}`.trim();

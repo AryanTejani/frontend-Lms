@@ -17,7 +17,7 @@ type PriceFilter = (typeof priceFilters)[number];
 function getInstructorName(course: {
   instructor?: { first_name: string | null; last_name: string | null; email: string } | null;
 }): string {
-  if (!course.instructor) return 'TraderLion';
+  if (!course.instructor) return 'VidyaSetu';
   const first = course.instructor.first_name ?? '';
   const last = course.instructor.last_name ?? '';
   const name = `${first} ${last}`.trim();
@@ -46,9 +46,9 @@ export default function AcademyPage() {
     <div className="flex flex-col gap-(--space-4xl) items-center px-(--space-lg) py-(--space-2xl)">
       {/* Hero */}
       <div className="flex flex-col gap-(--space-base) items-center text-center">
-        <h3 className="h3 h3-bold">Trading education from the world&apos;s best</h3>
+        <h3 className="h3 h3-bold">NCERT Curriculum in Your Language</h3>
         <p className="label-1 label-1-medium text-(--color-text-secondary)">
-          From beginner courses to advanced classes, our library has something for everyone
+          From Class 1 to Class 8 — Maths, Science, English, Social Studies in 6 Indian languages
         </p>
       </div>
 
@@ -57,7 +57,7 @@ export default function AcademyPage() {
         value={searchValue}
         onChange={setSearchValue}
         onClear={() => setSearchValue('')}
-        placeholder="Search courses, masterclasses, and reports..."
+        placeholder="Search subjects, lessons, languages..."
         className="max-w-[506px] w-full"
       />
 

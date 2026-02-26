@@ -9,9 +9,9 @@ import { GPT_PROFILES, type ProfileData } from '@/features/assistant/gptProfiles
 import { ChatView, SearchView } from '@/features/assistant/views';
 
 const DEFAULT_SUGGESTIONS = [
-  'How do I identify a Stage 2 breakout?',
-  'When should I rebalance my 401k?',
-  'How do I set up a Roth IRA?',
+  'Photosynthesis kya hota hai?',
+  'Explain the water cycle in simple words',
+  'What are fractions? Give me an example',
 ];
 
 export default function AssistantPage() {
@@ -72,9 +72,9 @@ export default function AssistantPage() {
           <div className="flex items-center justify-center w-20 h-20 rounded-(--radius-2xl) bg-gradient-to-b from-[#170689] to-[#7094d7] shadow-2xl">
             <AIIcon className="w-10 h-10 text-white" />
           </div>
-          <h4 className="h4-bold text-(--color-text-primary)">TraderLion AI Assistant</h4>
+          <h4 className="h4-bold text-(--color-text-primary)">VidyaSetu AI Tutor</h4>
           <p className="label-1-medium text-(--color-text-secondary)">
-            Get instant answers about trading strategies, market analysis, and more
+            Ask any question in your language — Science, Maths, History, and more
           </p>
         </div>
 
@@ -82,7 +82,7 @@ export default function AssistantPage() {
         <div className="w-full max-w-[800px]">
           <Chatbox
             variant="default"
-            placeholder="Ask about strategies, risk management, chart patterns..."
+            placeholder="Ask your question in any language..."
           />
         </div>
 
@@ -90,9 +90,9 @@ export default function AssistantPage() {
         <div className="flex flex-col items-center gap-(--space-base)">
           <span className="label-2-regular text-(--color-text-primary)">Ideas to get started</span>
           <div className="flex flex-wrap justify-center gap-(--space-xs)">
-            <AiPrompt text="How do I identify a Stage 2 breakout?" />
-            <AiPrompt text="When should I rebalance my 401k?" />
-            <AiPrompt text="How do I set up a Roth IRA?" />
+            <AiPrompt text="Photosynthesis kya hota hai?" />
+            <AiPrompt text="Explain the water cycle in simple words" />
+            <AiPrompt text="What are fractions? Give me an example" />
           </div>
         </div>
       </div>

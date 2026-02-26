@@ -10,36 +10,36 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env['NEXT_PUBLIC_APP_URL'] ?? 'https://traderlion.com'),
+  metadataBase: new URL(process.env['NEXT_PUBLIC_APP_URL'] ?? 'https://vidyasetu.in'),
   title: {
-    default: 'TraderLion - Learn Trading',
-    template: '%s | TraderLion',
+    default: 'VidyaSetu - Learn in Your Language',
+    template: '%s | VidyaSetu',
   },
   description:
-    'Master stock trading with courses from professional traders. Join TraderLion and learn from the best.',
-  keywords: ['trading', 'stocks', 'courses', 'education', 'investment'],
-  authors: [{ name: 'TraderLion' }],
-  creator: 'TraderLion',
+    'AI-powered multilingual learning portal for rural India. Learn any subject in your mother tongue.',
+  keywords: ['education', 'multilingual', 'rural India', 'NCERT', 'learning', 'AI tutor', 'Hindi', 'Tamil', 'Telugu'],
+  authors: [{ name: 'VidyaSetu' }],
+  creator: 'VidyaSetu',
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    url: 'https://traderlion.com',
-    siteName: 'TraderLion',
-    title: 'TraderLion - Learn Trading',
-    description: 'Master stock trading with courses from professional traders.',
+    locale: 'en_IN',
+    url: 'https://vidyasetu.in',
+    siteName: 'VidyaSetu',
+    title: 'VidyaSetu - Learn in Your Language',
+    description: 'AI-powered multilingual learning portal for rural India. Learn any subject in your mother tongue.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'TraderLion',
+        alt: 'VidyaSetu',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TraderLion - Learn Trading',
-    description: 'Master stock trading with courses from professional traders.',
+    title: 'VidyaSetu - Learn in Your Language',
+    description: 'AI-powered multilingual learning portal for rural India. Learn any subject in your mother tongue.',
     images: ['/og-image.png'],
   },
   robots: {

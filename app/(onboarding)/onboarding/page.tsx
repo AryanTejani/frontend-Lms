@@ -3,7 +3,7 @@ import { OnboardingView } from '@/features/onboarding/views/OnboardingView';
 
 export const metadata: Metadata = {
   title: 'Onboarding',
-  description: 'Set up your TraderLion learning profile.',
+  description: 'Set up your VidyaSetu learning profile.',
 };
 
 export default function OnboardingPage() {

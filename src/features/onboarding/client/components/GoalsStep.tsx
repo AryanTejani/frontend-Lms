@@ -25,8 +25,8 @@ export function GoalsStep({ selected, onToggle, onNext, onBack }: GoalsStepProps
 
       <div className="w-full mt-(--space-lg)">
         <OnboardingQuestion
-          title="What are your primary learning goals?"
-          subtitle="Select all that apply"
+          title="Which subjects do you want to study?"
+          subtitle="Select all that interest you"
         />
       </div>
 

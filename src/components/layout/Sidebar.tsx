@@ -19,8 +19,8 @@ import { cn } from '@/utils/cn';
 
 const navItems = [
   { icon: HomeIcon, label: 'Dashboard', href: paths.dashboard },
-  { icon: AssistantIcon, label: 'AI Assistant', href: paths.assistant },
-  { icon: AcademyIcon, label: 'Academy', href: paths.academy },
+  { icon: AssistantIcon, label: 'AI Tutor', href: paths.assistant },
+  { icon: AcademyIcon, label: 'Courses', href: paths.academy },
   { icon: LearningIcon, label: 'My Learning', href: paths.learning },
   { icon: VideosIcon, label: 'Videos', href: paths.videos },
 ];

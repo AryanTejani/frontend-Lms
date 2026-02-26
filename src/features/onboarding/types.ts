@@ -35,24 +35,25 @@ export interface TimeOption {
 }
 
 export const EXPERIENCE_OPTIONS: ExperienceOption[] = [
-  { title: 'Beginner', subtitle: 'New to trading or less than 1 year' },
-  { title: 'Intermediate', subtitle: '1-3 years of trading experience' },
-  { title: 'Advanced', subtitle: '3+ years of active trading' },
+  { title: 'Hindi (हिंदी)', subtitle: "North India's most spoken language" },
+  { title: 'Tamil (தமிழ்)', subtitle: 'Tamil Nadu & Sri Lanka' },
+  { title: 'Telugu (తెలుగు)', subtitle: 'Andhra Pradesh & Telangana' },
+  { title: 'Marathi (मराठी)', subtitle: 'Maharashtra' },
+  { title: 'Kannada (ಕನ್ನಡ)', subtitle: 'Karnataka' },
+  { title: 'Bengali (বাংলা)', subtitle: 'West Bengal & Bangladesh' },
 ];
 
 export const GOAL_OPTIONS: GoalOption[] = [
-  { title: 'Learn Technical Analysis', subtitle: 'Chart patterns & indicators' },
-  { title: 'Build a Trading System', subtitle: 'Rules-based approach' },
-  { title: 'Risk Management', subtitle: 'Protect your capital' },
-  { title: 'Find Winning Stocks', subtitle: 'Stock screening & selection' },
-  { title: 'Improve Consistency', subtitle: 'Develop discipline & routine' },
-  { title: 'Grow My Portfolio', subtitle: 'Long-term wealth building' },
+  { title: 'Mathematics', subtitle: 'Numbers, shapes, and problem solving' },
+  { title: 'Science', subtitle: 'Plants, animals, physics, and chemistry' },
+  { title: 'English', subtitle: 'Reading, writing, and communication' },
+  { title: 'Social Studies', subtitle: 'History, geography, and civics' },
 ];
 
 export const STYLE_OPTIONS: StyleOption[] = [
-  { title: 'Day Trading', subtitle: 'Open & close positions within the same day' },
-  { title: 'Swing Trading', subtitle: 'Hold positions for days to weeks' },
-  { title: 'Position Trading', subtitle: 'Hold positions for weeks to months' },
+  { title: 'Class 1-2', subtitle: 'Early learning foundation' },
+  { title: 'Class 3-5', subtitle: 'Primary school' },
+  { title: 'Class 6-8', subtitle: 'Upper primary school' },
 ];
 
 export const TIME_OPTIONS: TimeOption[] = [

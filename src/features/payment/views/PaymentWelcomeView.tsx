@@ -65,7 +65,7 @@ export function PaymentWelcomeView() {
         <div className="flex flex-col items-center gap-(--space-base) border border-(--color-stroke-primary) rounded-(--radius-xl) shadow-(--shadow-md) p-(--space-xl) max-w-[480px] w-full text-center">
           <Image
             src="/logo.png"
-            alt="TraderLion"
+            alt="VidyaSetu"
             width={48}
             height={48}
             className="object-contain"
@@ -74,7 +74,7 @@ export function PaymentWelcomeView() {
           {isConfirmed ? (
             <>
               <h3 className="h4-semibold text-(--color-action-primary) m-0">
-                Welcome to TraderLion!
+                Welcome to VidyaSetu!
               </h3>
               <p className="body-1-regular text-(--color-text-secondary) m-0">
                 Your subscription is active. You&apos;re about to be redirected to complete your

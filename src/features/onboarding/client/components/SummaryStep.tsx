@@ -50,13 +50,13 @@ export function SummaryStep({ data, onContinue, onModify }: SummaryStepProps) {
         </div>
         <div className="flex gap-(--space-xs)">
           <OnboardingSummaryField
-            label="Experience"
+            label="Language"
             value={data.experienceLevel ?? 'Not set'}
             variant="default"
             className="flex-1"
           />
           <OnboardingSummaryField
-            label="Goal"
+            label="Subject"
             value={data.learningGoals[0] ?? 'Not set'}
             variant="default"
             className="flex-1"
@@ -68,7 +68,7 @@ export function SummaryStep({ data, onContinue, onModify }: SummaryStepProps) {
             className="flex-1"
           />
           <OnboardingSummaryField
-            label="Focus Area"
+            label="Grade"
             value={data.tradingStyle ?? 'Not set'}
             variant="default"
             className="flex-1"

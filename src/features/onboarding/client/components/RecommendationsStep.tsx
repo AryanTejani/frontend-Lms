@@ -13,57 +13,57 @@ interface RecommendationsStepProps {
 
 const DUMMY_COURSES = [
   {
-    title: 'Trading Foundations',
-    instructor: 'Mark Ritchie',
+    title: 'Science for Class 5',
+    instructor: 'VidyaSetu AI',
     lessonCount: 12,
     duration: '3h 45m',
-    description: 'Perfect starting point based on your experience level',
+    description: 'Plants, animals, and how the world works',
     thumbnailSrc: '/images/course-placeholder-1.jpg',
   },
   {
-    title: 'Technical Analysis Mastery',
-    instructor: 'Sarah Chen',
-    lessonCount: 18,
-    duration: '5h 20m',
-    description: 'Covers chart patterns and indicators aligned with your goals',
+    title: 'Maths Foundations',
+    instructor: 'VidyaSetu AI',
+    lessonCount: 10,
+    duration: '2h 30m',
+    description: 'Numbers, fractions, and daily calculations',
     thumbnailSrc: '/images/course-placeholder-2.jpg',
   },
   {
-    title: 'Risk Management Essentials',
-    instructor: 'David Park',
+    title: 'Hindi Reading',
+    instructor: 'VidyaSetu AI',
     lessonCount: 8,
     duration: '2h 10m',
-    description: 'Build a solid risk framework for your trading style',
+    description: 'Stories, poems, and comprehension',
     thumbnailSrc: '/images/course-placeholder-3.jpg',
   },
 ];
 
 const DUMMY_VIDEOS = [
   {
-    title: 'Market Analysis Weekly',
-    instructor: 'TraderLion Team',
+    title: 'Photosynthesis in Tamil',
+    instructor: 'VidyaSetu AI',
     lessonCount: 1,
-    duration: '45m',
-    description: 'Latest market breakdown and trading opportunities',
+    duration: '15m',
+    description: 'How plants make food explained in simple Tamil',
     thumbnailSrc: '/images/course-placeholder-1.jpg',
   },
   {
-    title: 'Swing Trading Setup Guide',
-    instructor: 'Mark Ritchie',
+    title: 'Fractions Made Simple',
+    instructor: 'VidyaSetu AI',
     lessonCount: 1,
-    duration: '30m',
-    description: 'How to identify high-probability swing setups',
+    duration: '12m',
+    description: 'Fractions explained with real-world examples',
     thumbnailSrc: '/images/course-placeholder-2.jpg',
   },
 ];
 
 const DUMMY_AI = [
   {
-    title: 'AI Trading Assistant',
-    instructor: 'TraderLion AI',
+    title: 'AI Language Tutor',
+    instructor: 'VidyaSetu AI',
     lessonCount: 0,
     duration: 'Interactive',
-    description: 'Get personalized answers to your trading questions',
+    description: 'Ask any question in your language, get instant answers',
     thumbnailSrc: '/images/course-placeholder-3.jpg',
   },
 ];

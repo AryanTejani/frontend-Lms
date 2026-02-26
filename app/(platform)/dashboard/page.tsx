@@ -11,39 +11,39 @@ import { VideoCard } from '@/features/videos/client/components';
 
 export const metadata: Metadata = {
   title: 'Dashboard',
-  description: 'Your TraderLion dashboard.',
+  description: 'Your VidyaSetu learning dashboard.',
 };
 
 const recommendedCourses = [
   {
-    category: 'STAGE ANALYSIS',
+    category: 'MATHEMATICS',
     rating: '4.9',
-    title: 'Stage Analysis Masterclass',
-    author: 'Nate Michaud',
+    title: 'Fractions & Decimals',
+    author: 'NCERT Class 5',
     description:
-      'Master market cycles and optimal entry points using proven methodologies and techniques.',
-    priceLabel: 'Investment',
-    price: '$299',
-  },
-  {
-    category: 'STAGE ANALYSIS',
-    rating: '4.9',
-    title: 'Advanced Stage Analysis',
-    author: 'Alicia Keys',
-    description:
-      'Unlock the power of market stages to identify high-probability trading opportunities.',
+      'Learn fractions using real-world examples from daily village life',
     priceLabel: 'Price',
-    price: '$499',
+    price: 'Free',
   },
   {
-    category: 'MARKET TIMING',
+    category: 'SCIENCE',
+    rating: '4.9',
+    title: 'Plants & Photosynthesis',
+    author: 'NCERT Class 5',
+    description:
+      'Understand how plants make food using local farm examples',
+    priceLabel: 'Price',
+    price: 'Free',
+  },
+  {
+    category: 'LANGUAGE',
     rating: '4.8',
-    title: 'Market Timing Mastery',
-    author: 'Artie VanDyke',
+    title: 'Reading & Comprehension',
+    author: 'NCERT Class 4',
     description:
-      'Unlock the power of market stages to identify high-probability trading opportunities.',
+      'Build reading skills in your mother tongue with fun stories',
     priceLabel: 'Price',
-    price: '$499',
+    price: 'Free',
   },
 ];
 
@@ -51,26 +51,26 @@ const mentors = [
   {
     avatarUrl:
       'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face',
-    name: "William O'Neil",
-    description: 'Learn CAN SLIM methodology and growth investing strategies',
+    name: 'Maths Tutor',
+    description: 'Arithmetic, fractions, geometry explained in your language',
   },
   {
     avatarUrl:
       'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
-    name: 'Stan Weinstein',
-    description: 'Pioneer of Stage Analysis, teaching traders to identify market phases',
+    name: 'Science Tutor',
+    description: 'Biology, physics, chemistry with local farm & village examples',
   },
   {
     avatarUrl:
       'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face',
-    name: 'Mark Minervini',
-    description: 'U.S. Investing Champion known for Volatility Contraction Patterns (VCP)',
+    name: 'Language Guide',
+    description: 'Hindi, Tamil, Telugu reading & writing skills',
   },
   {
     avatarUrl:
       'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=200&h=200&fit=crop&crop=face',
-    name: 'Linda Raschke',
-    description: 'Veteran trader recognized for practical, pattern-based swing strategies',
+    name: 'Social Studies',
+    description: 'History, geography, civics of India and your state',
   },
 ];
 
@@ -78,20 +78,20 @@ const ongoingCourses = [
   {
     avatarUrl:
       'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face',
-    heading: 'Stage Analysis Masterclass',
-    subHeading: 'Mark Minervini',
-    currentLesson: 'Stage 3: Markup Phase',
-    totalLessons: '24 lessons',
-    percentage: 67,
+    heading: 'Plants & Photosynthesis',
+    subHeading: 'Science — Class 5',
+    currentLesson: 'Lesson 3: How leaves make food',
+    totalLessons: '8 lessons',
+    percentage: 38,
   },
   {
     avatarUrl:
       'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
-    heading: 'Technical Analysis Fundamentals',
-    subHeading: 'David Ryan',
-    currentLesson: 'Stage 3: Markup Phase',
-    totalLessons: '24 lessons',
-    percentage: 67,
+    heading: 'Fractions Made Easy',
+    subHeading: 'Maths — Class 5',
+    currentLesson: 'Lesson 2: Adding fractions',
+    totalLessons: '10 lessons',
+    percentage: 20,
   },
 ];
 
@@ -99,27 +99,27 @@ const recentVideos = [
   {
     thumbnailUrl:
       'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop',
-    duration: '24:30',
-    title: 'How to Find Leading Stocks',
-    author: 'Mark Minervini',
+    duration: '12:30',
+    title: 'Water Cycle Explained in Tamil',
+    author: 'VidyaSetu Tutor',
     date: 'Jan 15, 2025',
     accessType: 'free' as const,
   },
   {
     thumbnailUrl:
       'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&h=400&fit=crop',
-    duration: '18:45',
-    title: 'Reading Volume Like a Pro',
-    author: 'David Ryan',
+    duration: '10:45',
+    title: 'Addition & Subtraction in Hindi',
+    author: 'VidyaSetu Tutor',
     date: 'Jan 12, 2025',
-    accessType: 'subscription' as const,
+    accessType: 'free' as const,
   },
   {
     thumbnailUrl:
       'https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600&h=400&fit=crop',
-    duration: '32:10',
-    title: 'Position Sizing Strategies',
-    author: 'Mark Ritchie II',
+    duration: '14:10',
+    title: 'Parts of a Plant — Telugu',
+    author: 'VidyaSetu Tutor',
     date: 'Jan 10, 2025',
     accessType: 'free' as const,
   },
@@ -145,11 +145,11 @@ export default function DashboardPage() {
         </div>
       </section>
 
-      {/* AI Trading Mentors */}
+      {/* AI Tutors */}
       <section className="py-10 lg:pt-[72px] lg:pb-[96px] px-4 md:px-10 lg:px-[120px]">
         <SectionTitle
-          title="AI Trading Mentors"
-          subtitle="Learn from legendary traders with AI-powered mentorship"
+          title="AI Tutors"
+          subtitle="Learn any subject with AI-powered tutors in your language"
           actionLabel="View all"
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-(--space-2xl) mt-(--space-4xl)">

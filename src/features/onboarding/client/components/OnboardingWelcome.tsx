@@ -12,7 +12,7 @@ interface OnboardingWelcomeProps {
 }
 
 export function OnboardingWelcome({
-  title = 'Welcome to TraderLion',
+  title = 'Welcome to VidyaSetu',
   icon,
   size = 'sm',
   className,
@@ -26,8 +26,8 @@ export function OnboardingWelcome({
       ) : (
         <div className="relative w-20 h-20 flex items-center justify-center">
           {/* Glow behind icon */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-b from-(--color-action-primary) to-[#7094d7] blur-[24px] opacity-[0.31]" />
-          <div className="relative w-20 h-20 rounded-full bg-gradient-to-b from-(--color-action-primary) to-[#7094d7] flex items-center justify-center shadow-lg">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-b from-(--color-action-primary) to-(--color-action-secondary) blur-[24px] opacity-[0.31]" />
+          <div className="relative w-20 h-20 rounded-full bg-gradient-to-b from-(--color-action-primary) to-(--color-action-secondary) flex items-center justify-center shadow-lg">
             {icon ?? <AIIcon className="w-10 h-10 text-white dark:text-[#111827]" />}
           </div>
         </div>

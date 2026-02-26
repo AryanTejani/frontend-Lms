@@ -3,7 +3,7 @@ import { PaymentWelcomeView } from '@/features/payment';
 
 export const metadata: Metadata = {
   title: 'Welcome',
-  description: 'Welcome to TraderLion!',
+  description: 'Welcome to VidyaSetu!',
 };
 
 export default function PaymentSuccessPage() {
