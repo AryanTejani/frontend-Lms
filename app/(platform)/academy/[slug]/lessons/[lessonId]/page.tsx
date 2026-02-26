@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ArrowBackIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@/assets/icons';
 import { Button, Badge } from '@/components/ui';
+import { ReadAloudButton } from '@/components/ui/ReadAloudButton';
 import { VideoPlayer } from '@/components/ui/VideoPlayer';
 import { useCourse } from '@/features/academy/client/hooks/useCourse';
 import { useLesson } from '@/features/academy/client/hooks/useLesson';
@@ -162,10 +163,13 @@ export default function LessonPage({
         {/* Title */}
         <div className="flex flex-col gap-(--space-sm)">
           <h1 className="h4 h4-semibold text-(--color-text-primary)">{lesson.title}</h1>
-          <Badge
-            label={lesson.lesson_type === 'video' ? 'Video' : 'Text'}
-            variant={lesson.lesson_type === 'video' ? 'default' : 'success'}
-          />
+          <div className="flex items-center gap-(--space-sm)">
+            <Badge
+              label={lesson.lesson_type === 'video' ? 'Video' : 'Text'}
+              variant={lesson.lesson_type === 'video' ? 'default' : 'success'}
+            />
+            {lesson.content && <ReadAloudButton text={lesson.content} />}
+          </div>
         </div>
 
         {/* Text content */}

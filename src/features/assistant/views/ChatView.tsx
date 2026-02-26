@@ -20,17 +20,19 @@ import { useChat, type ChatMessageImage } from '../client/hooks/useChat';
 import { useSpeech } from '../client/hooks/useSpeech';
 import { useVoiceInput } from '../client/hooks/useVoiceInput';
 import { generateQuiz } from '../client/api';
+import { useTtsStore } from '@/stores/ttsStore';
 
 interface ResponseActionsProps {
   text: string;
   onSpeak: () => void;
   onStop: () => void;
   isSpeaking: boolean;
+  isLoadingTts: boolean;
   onQuiz: () => void;
   isGeneratingQuiz: boolean;
 }
 
-function ResponseActions({ text, onSpeak, onStop, isSpeaking, onQuiz, isGeneratingQuiz }: ResponseActionsProps) {
+function ResponseActions({ text, onSpeak, onStop, isSpeaking, isLoadingTts, onQuiz, isGeneratingQuiz }: ResponseActionsProps) {
   const handleCopy = (): void => {
     void navigator.clipboard.writeText(text);
   };
@@ -48,12 +50,15 @@ function ResponseActions({ text, onSpeak, onStop, isSpeaking, onQuiz, isGenerati
       <button
         type="button"
         onClick={isSpeaking ? onStop : onSpeak}
-        className={`flex items-center justify-center size-8 bg-transparent border-none cursor-pointer transition-colors ${
+        disabled={isLoadingTts}
+        className={`flex items-center justify-center size-8 bg-transparent border-none cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
           isSpeaking
             ? 'text-(--color-accent-green) animate-pulse'
-            : 'text-(--color-text-secondary) hover:text-(--color-text-primary)'
+            : isLoadingTts
+              ? 'text-(--color-text-tertiary)'
+              : 'text-(--color-text-secondary) hover:text-(--color-text-primary)'
         }`}
-        aria-label={isSpeaking ? 'Stop speaking' : 'Read aloud'}
+        aria-label={isLoadingTts ? 'Loading voice...' : isSpeaking ? 'Stop speaking' : 'Read aloud'}
       >
         {isSpeaking ? <PauseIcon className="icon-sm" /> : <VolumeUpIcon className="icon-sm" />}
       </button>
@@ -144,15 +149,17 @@ export function ChatView() {
   });
 
   // TTS
-  const { isSpeaking, speak, stop: stopSpeaking } = useSpeech();
+  const { isSpeaking, isLoading: isLoadingTts, speak, stop: stopSpeaking } = useSpeech();
+  const ttsGender = useTtsStore((s) => s.gender);
+  const setTtsGender = useTtsStore((s) => s.setGender);
   const [speakingIndex, setSpeakingIndex] = useState<number | null>(null);
 
   const handleSpeak = useCallback(
     (text: string, index: number) => {
       setSpeakingIndex(index);
-      speak(text);
+      speak(text, undefined, ttsGender);
     },
-    [speak],
+    [speak, ttsGender],
   );
 
   const handleStopSpeaking = useCallback(() => {
@@ -417,7 +424,18 @@ export function ChatView() {
           )}
           <h6 className="h6 h6-semibold text-(--color-text-primary)">{tutorName}</h6>
         </div>
-        <Button variant="no-border">Save chat</Button>
+        <div className="flex items-center gap-(--space-sm)">
+          <button
+            type="button"
+            onClick={() => setTtsGender(ttsGender === 'female' ? 'male' : 'female')}
+            className="flex items-center gap-(--space-xs2) px-(--space-sm) py-(--space-xs2) rounded-full bg-(--color-bg-secondary) border border-(--color-bg-tertiary) cursor-pointer text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
+            aria-label={`Voice: ${ttsGender}. Click to switch.`}
+          >
+            <VolumeUpIcon className="icon-xs" />
+            <span className="label-3 label-3-medium capitalize">{ttsGender}</span>
+          </button>
+          <Button variant="no-border">Save chat</Button>
+        </div>
       </div>
 
       {/* Messages Area */}
@@ -453,6 +471,7 @@ export function ChatView() {
                           onSpeak={() => handleSpeak(msg.text, index)}
                           onStop={handleStopSpeaking}
                           isSpeaking={isSpeaking && speakingIndex === index}
+                          isLoadingTts={isLoadingTts && speakingIndex === index}
                           onQuiz={() => void handleGenerateQuiz(msg.text)}
                           isGeneratingQuiz={isGeneratingQuiz}
                         />
