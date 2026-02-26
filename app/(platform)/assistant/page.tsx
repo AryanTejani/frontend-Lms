@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { AIIcon } from '@/assets/icons';
 import { Chatbox, AiPrompt } from '@/components/ui';
 import { MentorChatbox, MentorModal } from '@/features/assistant/client/components';
@@ -15,17 +15,34 @@ const DEFAULT_SUGGESTIONS = [
 ];
 
 export default function AssistantPage() {
-  const { selectedMentor, selectedGpt, isSearchOpen } = useAssistant();
+  const { selectedMentor, selectedGpt, isSearchOpen, conversationId, startNewConversation } = useAssistant();
   const [profileModal, setProfileModal] = useState<{
     type: 'gpt';
     name: string;
     data: ProfileData;
   } | null>(null);
 
-  const closeModal = () => setProfileModal(null);
+  const closeModal = (): void => setProfileModal(null);
+
+  const handleStartChat = useCallback(
+    (text: string) => {
+      startNewConversation(text);
+    },
+    [startNewConversation],
+  );
 
   if (isSearchOpen) {
     return <SearchView />;
+  }
+
+  // If a mentor is selected and has an active conversation, show ChatView
+  if (selectedMentor && conversationId) {
+    return <ChatView />;
+  }
+
+  // If a GPT is selected and has an active conversation, show ChatView
+  if (selectedGpt && conversationId) {
+    return <ChatView />;
   }
 
   if (selectedGpt) {
@@ -40,6 +57,8 @@ export default function AssistantPage() {
               : undefined
           }
           suggestions={DEFAULT_SUGGESTIONS}
+          onSubmit={handleStartChat}
+          onSuggestionClick={handleStartChat}
         />
         {profileModal && profileModal.type === 'gpt' && (
           <div
@@ -61,7 +80,16 @@ export default function AssistantPage() {
   }
 
   if (selectedMentor) {
-    return <ChatView />;
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <MentorChatbox
+          name={selectedMentor.name}
+          suggestions={DEFAULT_SUGGESTIONS}
+          onSubmit={handleStartChat}
+          onSuggestionClick={handleStartChat}
+        />
+      </div>
+    );
   }
 
   return (
