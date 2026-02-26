@@ -1,0 +1,82 @@
+{
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "signOut": "Sign Out",
+    "getStarted": "Get Started",
+    "loading": "Loading...",
+    "modify": "Modify",
+    "startLearning": "Start Learning"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "aiTutor": "AI Tutor",
+    "courses": "Courses",
+    "myLearning": "My Learning",
+    "videos": "Videos",
+    "notifications": "Notifications",
+    "account": "Account"
+  },
+  "hero": {
+    "title": "Learn in YOUR Language, Your Way",
+    "subtitle": "AI-powered education platform that teaches you in your mother tongue. Ask anything, learn everything.",
+    "placeholder": "Ask me anything in your language...",
+    "getStarted": "Try asking:"
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "Welcome to VidyaSetu",
+      "subtitle": "Your personalized learning journey starts here",
+      "feature1": "NCERT Courses",
+      "feature2": "Video Lessons",
+      "feature3": "AI Tutor"
+    },
+    "language": {
+      "heading": "Let's personalize your experience",
+      "title": "Choose your preferred language",
+      "subtitle": "All content will be shown in this language",
+      "info": "You can change this later from settings"
+    },
+    "age": {
+      "heading": "Tell us about yourself",
+      "title": "How old are you?",
+      "subtitle": "This helps us tailor content to your level",
+      "placeholder": "Enter your age",
+      "info": "This is optional — skip if you prefer"
+    },
+    "grade": {
+      "heading": "Tell us about yourself",
+      "title": "What grade or level are you studying?",
+      "subtitle": "We'll recommend courses that match your level",
+      "info": "You can update this anytime"
+    },
+    "subjects": {
+      "heading": "What interests you?",
+      "title": "Which subjects do you want to learn?",
+      "subtitle": "Select one or more subjects"
+    },
+    "goals": {
+      "heading": "What are your goals?",
+      "title": "What do you want to achieve?",
+      "subtitle": "Select one or more goals",
+      "info": "We'll personalize your dashboard based on these goals"
+    },
+    "summary": {
+      "heading": "You're all set!",
+      "subtitle": "Here's your learning profile. You can modify it anytime.",
+      "profileTitle": "Your Learning Profile",
+      "language": "Language",
+      "age": "Age",
+      "grade": "Grade",
+      "subjects": "Subjects",
+      "goals": "Goals",
+      "notSet": "Not set"
+    }
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "forgotPassword": "Forgot Password?",
+    "resetPassword": "Reset Password"
+  }
+}
