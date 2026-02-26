@@ -11,6 +11,7 @@ import {
   PlayCircleOutlineIcon,
 } from '@/assets/icons';
 import { Button, Badge } from '@/components/ui';
+import { ReadAloudButton } from '@/components/ui/ReadAloudButton';
 import { VideoPlayer } from '@/components/ui/VideoPlayer';
 import { useCourse } from '@/features/academy/client/hooks/useCourse';
 import { useTopic } from '@/features/academy/client/hooks/useTopic';
@@ -213,10 +214,13 @@ export default function TopicPage({
         {/* Title */}
         <div className="flex flex-col gap-(--space-sm)">
           <h1 className="h4 h4-semibold text-(--color-text-primary)">{topic.title}</h1>
-          <Badge
-            label={topic.topic_type === 'video' ? 'Video' : 'Text'}
-            variant={topic.topic_type === 'video' ? 'default' : 'success'}
-          />
+          <div className="flex items-center gap-(--space-sm)">
+            <Badge
+              label={topic.topic_type === 'video' ? 'Video' : 'Text'}
+              variant={topic.topic_type === 'video' ? 'default' : 'success'}
+            />
+            {topic.content && <ReadAloudButton text={topic.content} />}
+          </div>
         </div>
 
         {/* Text content */}

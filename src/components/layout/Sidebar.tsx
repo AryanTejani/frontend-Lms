@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { paths } from '@/config';
@@ -19,10 +19,22 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { MenuItem } from '@/components/ui';
 import { cn } from '@/utils/cn';
 
-export function Sidebar() {
+export function Sidebar({ defaultExpanded = false }: { defaultExpanded?: boolean }) {
   const pathname = usePathname();
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+  const [hasMounted, setHasMounted] = useState(false);
   const t = useTranslations('sidebar');
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (hasMounted) {
+      localStorage.setItem('sidebar-expanded', String(isExpanded));
+      document.cookie = `sidebar-expanded=${isExpanded};path=/;max-age=${60 * 60 * 24 * 365};SameSite=Lax`;
+    }
+  }, [isExpanded, hasMounted]);
 
   const navItems = [
     { icon: HomeIcon, label: t('dashboard'), href: paths.dashboard },
@@ -35,7 +47,8 @@ export function Sidebar() {
   return (
     <aside
       className={cn(
-        'relative flex h-screen sticky top-0 border-r border-(--color-bg-tertiary) bg-(--color-bg-primary) flex-col py-(--space-lg) transition-all duration-300',
+        'relative flex h-screen sticky top-0 border-r border-(--color-bg-tertiary) bg-(--color-bg-primary) flex-col py-(--space-lg)',
+        hasMounted && 'transition-all duration-300',
         isExpanded ? 'w-[255px] items-start' : 'w-[80px] items-center'
       )}
     >

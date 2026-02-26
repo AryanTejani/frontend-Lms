@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback, type KeyboardEvent } from 'react';
+import { useState, useRef, useCallback, type KeyboardEvent, type ReactNode } from 'react';
 import { cn } from '@/utils/cn';
 import { SendIcon } from '@/assets/icons';
 import { Button } from './Button';
@@ -12,6 +12,8 @@ interface ChatboxProps {
   value?: string;
   onChange?: (value: string) => void;
   className?: string;
+  leftActions?: ReactNode;
+  rightActions?: ReactNode;
 }
 
 export function Chatbox({
@@ -21,6 +23,8 @@ export function Chatbox({
   value: controlledValue,
   onChange,
   className,
+  leftActions,
+  rightActions,
 }: ChatboxProps) {
   const [internalValue, setInternalValue] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -59,6 +63,7 @@ export function Chatbox({
         className
       )}
     >
+      {leftActions && <div className="flex items-center gap-1 shrink-0">{leftActions}</div>}
       <textarea
         ref={textareaRef}
         value={value}
@@ -71,6 +76,7 @@ export function Chatbox({
           isCompact ? 'py-0' : ''
         )}
       />
+      {rightActions && <div className="flex items-center gap-1 shrink-0">{rightActions}</div>}
       <Button
         variant="default"
         onClick={handleSubmit}

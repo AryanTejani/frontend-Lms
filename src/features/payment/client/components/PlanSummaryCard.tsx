@@ -7,7 +7,7 @@ interface PlanSummaryCardProps {
 }
 
 function formatPrice(amountCents: number): string {
-  return `$${(amountCents / 100).toFixed(2)}`;
+  return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(amountCents / 100);
 }
 
 function getIntervalLabel(plan: Plan): string {
