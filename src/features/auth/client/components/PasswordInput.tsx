@@ -38,12 +38,14 @@ export function PasswordInput({
           }}
           placeholder={placeholder}
           disabled={disabled}
+          suppressHydrationWarning
           className="body-3-regular w-full h-(--input-height) pr-(--space-4xl) pl-(--space-base) bg-(--color-bg-primary) border border-(--color-bg-tertiary) rounded-lg text-(--color-text-primary) outline-none transition-[border-color] duration-200 focus:border-(--color-stroke-selection)"
         />
         <button
           type="button"
           onClick={toggleVisibility}
           disabled={disabled}
+          suppressHydrationWarning
           className="absolute right-(--space-base) flex items-center justify-center p-0 bg-transparent border-none disabled:cursor-not-allowed cursor-pointer"
           aria-label={showPassword ? 'Hide password' : 'Show password'}
         >
