@@ -1,0 +1,29 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#d6fac6",
+    "activityBar.background": "#d6fac6",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#6c96f2",
+    "activityBarBadge.foreground": "#15202b",
+    "commandCenter.border": "#15202b99",
+    "sash.hoverBorder": "#d6fac6",
+    "statusBar.background": "#b4f598",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#92f069",
+    "statusBarItem.remoteBackground": "#b4f598",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#b4f598",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#b4f59899",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#b4f598"
+}

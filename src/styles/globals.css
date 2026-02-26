@@ -1,0 +1,1234 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+/* ============================================
+   TraderLion Design System - Global CSS
+   Generated from Figma Design System
+   ============================================ */
+
+/* ============================================
+   CSS Custom Properties (Design Tokens)
+   ============================================ */
+
+:root {
+  /* ----------------------------------------
+     Font Family
+     ---------------------------------------- */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+
+  /* ----------------------------------------
+     Border Radius
+     ---------------------------------------- */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-card: 14px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+  --radius-4xl: 32px;
+  --radius-5xl: 48px;
+  --radius-full: 9999px;
+
+  /* ----------------------------------------
+     Spacing
+     ---------------------------------------- */
+  --space-0: 0px;
+  --space-px: 1px;
+  --space-xxs: 2px;
+  --space-xs2: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-base: 16px;
+  --space-md: 20px;
+  --space-lg: 24px;
+  --space-xl: 28px;
+  --space-2xl: 32px;
+  --space-3xl: 40px;
+  --space-4xl: 48px;
+  --space-5xl: 60px;
+  --space-6xl: 72px;
+  --space-7xl: 96px;
+
+  /* ----------------------------------------
+     Sizes
+     ---------------------------------------- */
+  --size-0: 0px;
+  --size-xxs: 2px;
+  --size-xs: 4px;
+  --size-sm: 8px;
+  --size-base: 12px;
+  --size-lg: 16px;
+  --size-xl: 20px;
+  --size-2xl: 24px;
+  --size-3xl: 32px;
+  --size-4xl: 40px;
+  --size-5xl: 56px;
+  --size-6xl: 96px;
+
+  /* ----------------------------------------
+     Component Sizes
+     ---------------------------------------- */
+  --input-height: 50px;
+  --button-height-sm: 32px;
+  --button-height-md: 40px;
+  --button-height-lg: 48px;
+  --icon-size-sm: 16px;
+  --icon-size-md: 20px;
+  --icon-size-lg: 24px;
+  --logo-size: 48px;
+  --card-width-sm: 320px;
+  --card-width-md: 448px;
+  --card-width-lg: 560px;
+
+  /* ----------------------------------------
+     Shadows
+     ---------------------------------------- */
+  --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0px 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  /* ----------------------------------------
+     Colors - Light Mode (Default)
+     ---------------------------------------- */
+
+  /* Primary & Accent */
+  --color-primary-accent: #3b4cca;
+  --color-secondary-accent: #ffffff;
+
+  /* Stroke Colors */
+  --color-stroke-primary: #6b7280;
+  --color-stroke-secondary: #6e81c4;
+  --color-stroke-tertiary: #d1d5db;
+  --color-stroke-error: #dc3545;
+  --color-stroke-success: #059669;
+  --color-stroke-selection: #3b4cca;
+  --color-stroke-active: #99b2ff;
+
+  /* Action Colors */
+  --color-action-primary: #3b4cca;
+  --color-action-secondary: #7691f8;
+
+  /* Misc */
+  --color-icons: #1f2937;
+  --color-comp-bg: #7a7b7c;
+  --color-selection: #ffffff;
+  --color-misc-inverse: #e5e7eb;
+
+  /* Background Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f3f4f6;
+  --color-bg-tertiary: #d1d5db;
+  --color-bg-active: #ebf1ff;
+  --color-bg-inactive: #f9fafb;
+  --color-bg-overlay: rgba(26, 26, 26, 0.2);
+  --color-bg-opaque: rgba(118, 145, 248, 0.2);
+
+  /* Text Colors */
+  --color-text-inverse: #ffffff;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary: #6b7280;
+  --color-text-link: #3b4cca;
+  --color-text-success: #06a26e;
+  --color-text-error: #dc3545;
+  --color-text-warning: #dc3545;
+  --color-text-destructive: #a24936;
+  --color-text-placeholder: rgba(26, 26, 26, 0.2);
+
+  /* Action State Colors */
+  --color-action-disabled: #7691f8;
+  --color-action-hover: rgba(59, 76, 202, 0.9);
+
+  /* Error/Success Backgrounds */
+  --color-bg-error: rgba(239, 68, 69, 0.05);
+  --color-bg-success: rgba(5, 150, 105, 0.05);
+
+  /* Primary RGB (for gradient alpha control) */
+  --color-primary-rgb: 59, 76, 202;
+
+  /* ----------------------------------------
+     Tailwind Color Primitives
+     ---------------------------------------- */
+
+  /* Slate */
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+
+  /* Gray */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-gray-950: #030712;
+
+  /* Zinc */
+  --color-zinc-50: #fafafa;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-200: #e4e4e7;
+  --color-zinc-300: #d4d4d8;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-500: #71717a;
+  --color-zinc-600: #52525b;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-800: #27272a;
+  --color-zinc-900: #18181b;
+  --color-zinc-950: #09090b;
+
+  /* Neutral */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+  --color-neutral-950: #0a0a0a;
+
+  /* Stone */
+  --color-stone-50: #fafaf9;
+  --color-stone-100: #f5f5f4;
+  --color-stone-200: #e7e5e4;
+  --color-stone-300: #d6d3d1;
+  --color-stone-400: #a8a29e;
+  --color-stone-500: #78716c;
+  --color-stone-600: #57534e;
+  --color-stone-700: #44403c;
+  --color-stone-800: #292524;
+  --color-stone-900: #1c1917;
+  --color-stone-950: #0c0a09;
+
+  /* Red */
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-300: #fca5a5;
+  --color-red-400: #f87171;
+  --color-red-500: #ef4444;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
+  --color-red-900: #7f1d1d;
+  --color-red-950: #450a0a;
+
+  /* Orange */
+  --color-orange-50: #fff7ed;
+  --color-orange-100: #ffedd5;
+  --color-orange-200: #fed7aa;
+  --color-orange-300: #fdba74;
+  --color-orange-400: #fb923c;
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c2410c;
+  --color-orange-800: #9a3412;
+  --color-orange-900: #7c2d12;
+  --color-orange-950: #431407;
+
+  /* Amber */
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  --color-amber-900: #78350f;
+  --color-amber-950: #451a03;
+
+  /* Yellow */
+  --color-yellow-50: #fefce8;
+  --color-yellow-100: #fef9c3;
+  --color-yellow-200: #fef08a;
+  --color-yellow-300: #fde047;
+  --color-yellow-400: #facc15;
+  --color-yellow-500: #eab308;
+  --color-yellow-600: #ca8a04;
+  --color-yellow-700: #a16207;
+  --color-yellow-800: #854d0e;
+  --color-yellow-900: #713f12;
+  --color-yellow-950: #422006;
+
+  /* Lime */
+  --color-lime-50: #f7fee7;
+  --color-lime-100: #ecfccb;
+  --color-lime-200: #d9f99d;
+  --color-lime-300: #bef264;
+  --color-lime-400: #a3e635;
+  --color-lime-500: #84cc16;
+  --color-lime-600: #65a30d;
+  --color-lime-700: #4d7c0f;
+  --color-lime-800: #3f6212;
+  --color-lime-900: #365314;
+  --color-lime-950: #1a2e05;
+
+  /* Green */
+  --color-green-50: #f0fdf4;
+  --color-green-100: #dcfce7;
+  --color-green-200: #bbf7d0;
+  --color-green-300: #86efac;
+  --color-green-400: #4ade80;
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
+  --color-green-800: #166534;
+  --color-green-900: #14532d;
+  --color-green-950: #052e16;
+
+  /* Emerald */
+  --color-emerald-50: #ecfdf5;
+  --color-emerald-100: #d1fae5;
+  --color-emerald-200: #a7f3d0;
+  --color-emerald-300: #6ee7b7;
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+  --color-emerald-800: #065f46;
+  --color-emerald-900: #064e3b;
+  --color-emerald-950: #022c22;
+
+  /* Teal */
+  --color-teal-50: #f0fdfa;
+  --color-teal-100: #ccfbf1;
+  --color-teal-200: #99f6e4;
+  --color-teal-300: #5eead4;
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f766e;
+  --color-teal-800: #115e59;
+  --color-teal-900: #134e4a;
+  --color-teal-950: #042f2e;
+
+  /* Cyan */
+  --color-cyan-50: #ecfeff;
+  --color-cyan-100: #cffafe;
+  --color-cyan-200: #a5f3fc;
+  --color-cyan-300: #67e8f9;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+  --color-cyan-600: #0891b2;
+  --color-cyan-700: #0e7490;
+  --color-cyan-800: #155e75;
+  --color-cyan-900: #164e63;
+  --color-cyan-950: #083344;
+
+  /* Sky */
+  --color-sky-50: #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-sky-200: #bae6fd;
+  --color-sky-300: #7dd3fc;
+  --color-sky-400: #38bdf8;
+  --color-sky-500: #0ea5e9;
+  --color-sky-600: #0284c7;
+  --color-sky-700: #0369a1;
+  --color-sky-800: #075985;
+  --color-sky-900: #0c4a6e;
+  --color-sky-950: #082f49;
+
+  /* Blue */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+  --color-blue-950: #172554;
+
+  /* Indigo */
+  --color-indigo-50: #eef2ff;
+  --color-indigo-100: #e0e7ff;
+  --color-indigo-200: #c7d2fe;
+  --color-indigo-300: #a5b4fc;
+  --color-indigo-400: #818cf8;
+  --color-indigo-500: #6366f1;
+  --color-indigo-600: #4f46e5;
+  --color-indigo-700: #4338ca;
+  --color-indigo-800: #3730a3;
+  --color-indigo-900: #312e81;
+  --color-indigo-950: #1e1b4b;
+
+  /* Violet */
+  --color-violet-50: #f5f3ff;
+  --color-violet-100: #ede9fe;
+  --color-violet-200: #ddd6fe;
+  --color-violet-300: #c4b5fd;
+  --color-violet-400: #a78bfa;
+  --color-violet-500: #8b5cf6;
+  --color-violet-600: #7c3aed;
+  --color-violet-700: #6d28d9;
+  --color-violet-800: #5b21b6;
+  --color-violet-900: #4c1d95;
+  --color-violet-950: #2e1065;
+
+  /* Purple */
+  --color-purple-50: #faf5ff;
+  --color-purple-100: #f3e8ff;
+  --color-purple-200: #e9d5ff;
+  --color-purple-300: #d8b4fe;
+  --color-purple-400: #c084fc;
+  --color-purple-500: #a855f7;
+  --color-purple-600: #9333ea;
+  --color-purple-700: #7e22ce;
+  --color-purple-800: #6b21a8;
+  --color-purple-900: #581c87;
+  --color-purple-950: #3b0764;
+
+  /* Fuchsia */
+  --color-fuchsia-50: #fdf4ff;
+  --color-fuchsia-100: #fae8ff;
+  --color-fuchsia-200: #f5d0fe;
+  --color-fuchsia-300: #f0abfc;
+  --color-fuchsia-400: #e879f9;
+  --color-fuchsia-500: #d946ef;
+  --color-fuchsia-600: #c026d3;
+  --color-fuchsia-700: #a21caf;
+  --color-fuchsia-800: #86198f;
+  --color-fuchsia-900: #701a75;
+  --color-fuchsia-950: #4a044e;
+
+  /* Pink */
+  --color-pink-50: #fdf2f8;
+  --color-pink-100: #fce7f3;
+  --color-pink-200: #fbcfe8;
+  --color-pink-300: #f9a8d4;
+  --color-pink-400: #f472b6;
+  --color-pink-500: #ec4899;
+  --color-pink-600: #db2777;
+  --color-pink-700: #be185d;
+  --color-pink-800: #9d174d;
+  --color-pink-900: #831843;
+  --color-pink-950: #500724;
+
+  /* Rose */
+  --color-rose-50: #fff1f2;
+  --color-rose-100: #ffe4e6;
+  --color-rose-200: #fecdd3;
+  --color-rose-300: #fda4af;
+  --color-rose-400: #fb7185;
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
+  --color-rose-700: #be123c;
+  --color-rose-800: #9f1239;
+  --color-rose-900: #881337;
+  --color-rose-950: #4c0519;
+
+  /* Light mode Blue — Brand blue palette, light theme */
+  --color-light-blue-50: #ebf1ff;
+  --color-light-blue-100: #bdd0ff;
+  --color-light-blue-200: #99b2ff;
+  --color-light-blue-300: #7691f8;
+  --color-light-blue-400: #6e81c4;
+  --color-light-blue-500: #3b4cca;
+  --color-light-blue-600: #3b4cca;
+  --color-light-blue-700: #2e3ca3;
+  --color-light-blue-800: #252f5c;
+  --color-light-blue-900: #1d2542;
+  --color-light-blue-950: #070047;
+
+  /* Dark mode Blue — Brand blue palette, dark theme */
+  --color-dark-blue-50: #151c31;
+  --color-dark-blue-100: #18213a;
+  --color-dark-blue-200: #20294e;
+  --color-dark-blue-300: #273261;
+  --color-dark-blue-400: #2f3b74;
+  --color-dark-blue-500: #3d4c9b;
+  --color-dark-blue-600: #364487;
+  --color-dark-blue-700: #4555ae;
+  --color-dark-blue-800: #4c5ec1;
+  --color-dark-blue-900: #5466d5;
+  --color-dark-blue-primary: #5b6fe8;
+
+  /* B&W — Black and white primitives */
+  --color-bw-white: #ffffff;
+  --color-bw-black: #000000;
+
+  /* Alpha Light — Opacity scale on dark base (#1A1A1A) for light theme */
+  --color-alpha-light-00: #ffffff;
+  --color-alpha-light-50: rgba(26, 26, 26, 0.06);
+  --color-alpha-light-100: rgba(26, 26, 26, 0.09);
+  --color-alpha-light-200: rgba(26, 26, 26, 0.20);
+  --color-alpha-light-300: rgba(26, 26, 26, 0.28);
+  --color-alpha-light-400: rgba(26, 26, 26, 0.36);
+  --color-alpha-light-500: rgba(26, 26, 26, 0.48);
+  --color-alpha-light-600: rgba(26, 26, 26, 0.60);
+  --color-alpha-light-700: rgba(26, 26, 26, 0.70);
+  --color-alpha-light-800: rgba(26, 26, 26, 0.75);
+  --color-alpha-light-900: rgba(26, 26, 26, 0.80);
+  --color-alpha-light-1000: #1a1a1a;
+
+  /* Alpha Dark — Opacity scale on white base (#FFFFFF) for dark theme */
+  --color-alpha-dark-00: #141414;
+  --color-alpha-dark-50: rgba(255, 255, 255, 0.06);
+  --color-alpha-dark-100: rgba(255, 255, 255, 0.09);
+  --color-alpha-dark-200: rgba(255, 255, 255, 0.20);
+  --color-alpha-dark-300: rgba(255, 255, 255, 0.28);
+  --color-alpha-dark-400: rgba(255, 255, 255, 0.36);
+  --color-alpha-dark-500: rgba(255, 255, 255, 0.48);
+  --color-alpha-dark-600: rgba(255, 255, 255, 0.60);
+  --color-alpha-dark-700: rgba(255, 255, 255, 0.70);
+  --color-alpha-dark-800: rgba(255, 255, 255, 0.75);
+  --color-alpha-dark-900: rgba(255, 255, 255, 0.80);
+  --color-alpha-dark-1000: #ffffff;
+
+  /* LM Success — Success states, light mode */
+  --color-lm-success-main: #06a26e;
+  --color-lm-success-bg: #d1fae5;
+  --color-lm-success-border: #6ee7b7;
+
+  /* DM Success — Success states, dark mode */
+  --color-dm-success-main: #34d399;
+  --color-dm-success-bg: #a7e7d0;
+  --color-dm-success-border: #068e67;
+
+  /* LM Error — Error states, light mode */
+  --color-lm-error-main: #dc3545;
+  --color-lm-error-bg: #fee2e2;
+  --color-lm-error-border: #fca5a5;
+
+  /* DM Error — Error states, dark mode */
+  --color-dm-error-main: #ef4444;
+  --color-dm-error-bg: #c89898;
+  --color-dm-error-border: #c46a6a;
+
+  /* LM Info — Info states, light mode */
+  --color-lm-info-main: #3b82f6;
+  --color-lm-info-bg: #dbeafe;
+  --color-lm-info-border: #93c5fd;
+
+  /* DM Info — Info states, dark mode */
+  --color-dm-info-main: #60a5fa;
+  --color-dm-info-bg: #dbeafe;
+  --color-dm-info-border: #93c5fd;
+
+  /* ----------------------------------------
+     Font Weights
+     ---------------------------------------- */
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* ----------------------------------------
+     Title Typography
+     ---------------------------------------- */
+
+  /* Title 1 */
+  --title-1-font-size: 72px;
+  --title-1-line-height: 88px;
+  --title-1-letter-spacing: -0.8px;
+  --title-1-font-family: var(--font-family-primary);
+
+  /* Title 2 */
+  --title-2-font-size: 64px;
+  --title-2-line-height: 76px;
+  --title-2-letter-spacing: -0.8px;
+  --title-2-font-family: var(--font-family-primary);
+
+  /* Title 3 */
+  --title-3-font-size: 56px;
+  --title-3-line-height: 68px;
+  --title-3-letter-spacing: -0.6px;
+  --title-3-font-family: var(--font-family-primary);
+
+  /* ----------------------------------------
+     Heading Typography
+     ---------------------------------------- */
+
+  /* H1 */
+  --h1-font-size: 56px;
+  --h1-line-height: 68px;
+  --h1-letter-spacing: -0.5px;
+  --h1-font-family: var(--font-family-primary);
+
+  /* H2 */
+  --h2-font-size: 48px;
+  --h2-line-height: 58px;
+  --h2-letter-spacing: -0.4px;
+  --h2-font-family: var(--font-family-primary);
+
+  /* H3 */
+  --h3-font-size: 40px;
+  --h3-line-height: 48px;
+  --h3-letter-spacing: -0.3px;
+  --h3-font-family: var(--font-family-primary);
+
+  /* H4 */
+  --h4-font-size: 32px;
+  --h4-line-height: 38px;
+  --h4-letter-spacing: -0.2px;
+  --h4-font-family: var(--font-family-primary);
+
+  /* H5 */
+  --h5-font-size: 24px;
+  --h5-line-height: 30px;
+  --h5-letter-spacing: -0.15px;
+  --h5-font-family: var(--font-family-primary);
+
+  /* H6 */
+  --h6-font-size: 20px;
+  --h6-line-height: 24px;
+  --h6-letter-spacing: 0px;
+  --h6-font-family: var(--font-family-primary);
+
+  /* ----------------------------------------
+     Label Typography
+     ---------------------------------------- */
+
+  /* Label 1 */
+  --label-1-font-size: 16px;
+  --label-1-line-height: 22px;
+  --label-1-letter-spacing: -0.18px;
+  --label-1-font-family: var(--font-family-primary);
+
+  /* Label 2 */
+  --label-2-font-size: 14px;
+  --label-2-line-height: 20px;
+  --label-2-letter-spacing: -0.16px;
+  --label-2-font-family: var(--font-family-primary);
+
+  /* Label 3 */
+  --label-3-font-size: 12px;
+  --label-3-line-height: 16px;
+  --label-3-letter-spacing: -0.12px;
+  --label-3-font-family: var(--font-family-primary);
+
+  /* ----------------------------------------
+     Body Typography
+     ---------------------------------------- */
+
+  /* Body 1 */
+  --body-1-font-size: 18px;
+  --body-1-line-height: 28px;
+  --body-1-letter-spacing: 0px;
+  --body-1-font-family: var(--font-family-primary);
+
+  /* Body 2 */
+  --body-2-font-size: 16px;
+  --body-2-line-height: 24px;
+  --body-2-letter-spacing: 0px;
+  --body-2-font-family: var(--font-family-primary);
+
+  /* Body 3 */
+  --body-3-font-size: 14px;
+  --body-3-line-height: 20px;
+  --body-3-letter-spacing: 0px;
+  --body-3-font-family: var(--font-family-primary);
+
+  /* Body 4 */
+  --body-4-font-size: 12px;
+  --body-4-line-height: 16px;
+  --body-4-letter-spacing: 0px;
+  --body-4-font-family: var(--font-family-primary);
+
+  /* ----------------------------------------
+     Caption Typography
+     ---------------------------------------- */
+
+  /* Caption 1 */
+  --caption-1-font-size: 10px;
+  --caption-1-line-height: 12px;
+  --caption-1-letter-spacing: 0px;
+  --caption-1-font-family: var(--font-family-primary);
+
+  /* Caption 2 */
+  --caption-2-font-size: 9px;
+  --caption-2-line-height: 10px;
+  --caption-2-letter-spacing: 0px;
+  --caption-2-font-family: var(--font-family-primary);
+
+  /* ----------------------------------------
+     Icons - Note: In Next.js, icons should be
+     imported as React components or via Image.
+     The CSS url() approach doesn't work well
+     with Next.js bundling. Use SVG imports instead.
+     ---------------------------------------- */
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--body-2-font-size);
+  line-height: var(--body-2-line-height);
+  letter-spacing: var(--body-2-letter-spacing);
+}
+
+/* ============================================
+   Typography Utility Classes
+   ============================================ */
+
+/* ----------------------------------------
+   Title Classes
+   ---------------------------------------- */
+
+.title-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--title-1-font-size);
+  line-height: var(--title-1-line-height);
+  letter-spacing: var(--title-1-letter-spacing);
+}
+
+.title-1-regular { font-weight: var(--font-weight-regular); }
+.title-1-medium { font-weight: var(--font-weight-medium); }
+.title-1-bold { font-weight: var(--font-weight-bold); }
+
+.title-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--title-2-font-size);
+  line-height: var(--title-2-line-height);
+  letter-spacing: var(--title-2-letter-spacing);
+}
+
+.title-2-regular { font-weight: var(--font-weight-regular); }
+.title-2-medium { font-weight: var(--font-weight-medium); }
+.title-2-bold { font-weight: var(--font-weight-bold); }
+
+.title-3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--title-3-font-size);
+  line-height: var(--title-3-line-height);
+  letter-spacing: var(--title-3-letter-spacing);
+}
+
+.title-3-regular { font-weight: var(--font-weight-regular); }
+.title-3-medium { font-weight: var(--font-weight-medium); }
+.title-3-bold { font-weight: var(--font-weight-bold); }
+
+/* ----------------------------------------
+   Heading Classes
+   ---------------------------------------- */
+
+h1:not(.prose *), .h1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--h1-font-size);
+  line-height: var(--h1-line-height);
+  letter-spacing: var(--h1-letter-spacing);
+  margin: 0;
+}
+
+.h1-medium { font-weight: var(--font-weight-medium); }
+.h1-semibold { font-weight: var(--font-weight-semibold); }
+.h1-bold { font-weight: var(--font-weight-bold); }
+
+h2:not(.prose *), .h2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--h2-font-size);
+  line-height: var(--h2-line-height);
+  letter-spacing: var(--h2-letter-spacing);
+  margin: 0;
+}
+
+.h2-medium { font-weight: var(--font-weight-medium); }
+.h2-semibold { font-weight: var(--font-weight-semibold); }
+.h2-bold { font-weight: var(--font-weight-bold); }
+
+h3:not(.prose *), .h3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--h3-font-size);
+  line-height: var(--h3-line-height);
+  letter-spacing: var(--h3-letter-spacing);
+  margin: 0;
+}
+
+.h3-medium { font-weight: var(--font-weight-medium); }
+.h3-semibold { font-weight: var(--font-weight-semibold); }
+.h3-bold { font-weight: var(--font-weight-bold); }
+
+h4:not(.prose *), .h4 {
+  font-family: var(--font-family-primary);
+  font-size: var(--h4-font-size);
+  line-height: var(--h4-line-height);
+  letter-spacing: var(--h4-letter-spacing);
+  margin: 0;
+}
+
+.h4-medium { font-weight: var(--font-weight-medium); }
+.h4-semibold { font-weight: var(--font-weight-semibold); }
+.h4-bold { font-weight: var(--font-weight-bold); }
+
+h5:not(.prose *), .h5 {
+  font-family: var(--font-family-primary);
+  font-size: var(--h5-font-size);
+  line-height: var(--h5-line-height);
+  letter-spacing: var(--h5-letter-spacing);
+  margin: 0;
+}
+
+.h5-medium { font-weight: var(--font-weight-medium); }
+.h5-semibold { font-weight: var(--font-weight-semibold); }
+.h5-bold { font-weight: var(--font-weight-bold); }
+
+h6:not(.prose *), .h6 {
+  font-family: var(--font-family-primary);
+  font-size: var(--h6-font-size);
+  line-height: var(--h6-line-height);
+  letter-spacing: var(--h6-letter-spacing);
+  margin: 0;
+}
+
+.h6-medium { font-weight: var(--font-weight-medium); }
+.h6-semibold { font-weight: var(--font-weight-semibold); }
+.h6-bold { font-weight: var(--font-weight-bold); }
+
+/* ----------------------------------------
+   Label Classes
+   ---------------------------------------- */
+
+.label-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--label-1-font-size);
+  line-height: var(--label-1-line-height);
+  letter-spacing: var(--label-1-letter-spacing);
+}
+
+.label-1-regular { font-weight: var(--font-weight-regular); }
+.label-1-medium { font-weight: var(--font-weight-medium); }
+.label-1-semibold { font-weight: var(--font-weight-semibold); }
+.label-1-bold { font-weight: var(--font-weight-bold); }
+
+.label-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--label-2-font-size);
+  line-height: var(--label-2-line-height);
+  letter-spacing: var(--label-2-letter-spacing);
+}
+
+.label-2-regular { font-weight: var(--font-weight-regular); }
+.label-2-medium { font-weight: var(--font-weight-medium); }
+.label-2-semibold { font-weight: var(--font-weight-semibold); }
+.label-2-bold { font-weight: var(--font-weight-bold); }
+
+.label-3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--label-3-font-size);
+  line-height: var(--label-3-line-height);
+  letter-spacing: var(--label-3-letter-spacing);
+}
+
+.label-3-regular { font-weight: var(--font-weight-regular); }
+.label-3-medium { font-weight: var(--font-weight-medium); }
+.label-3-semibold { font-weight: var(--font-weight-semibold); }
+.label-3-bold { font-weight: var(--font-weight-bold); }
+
+/* ----------------------------------------
+   Body Classes
+   ---------------------------------------- */
+
+.body-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--body-1-font-size);
+  line-height: var(--body-1-line-height);
+  letter-spacing: var(--body-1-letter-spacing);
+}
+
+.body-1-regular { font-weight: var(--font-weight-regular); }
+.body-1-medium { font-weight: var(--font-weight-medium); }
+
+.body-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--body-2-font-size);
+  line-height: var(--body-2-line-height);
+  letter-spacing: var(--body-2-letter-spacing);
+}
+
+.body-2-regular { font-weight: var(--font-weight-regular); }
+.body-2-medium { font-weight: var(--font-weight-medium); }
+
+.body-3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--body-3-font-size);
+  line-height: var(--body-3-line-height);
+  letter-spacing: var(--body-3-letter-spacing);
+}
+
+.body-3-regular { font-weight: var(--font-weight-regular); }
+.body-3-medium { font-weight: var(--font-weight-medium); }
+
+.body-4 {
+  font-family: var(--font-family-primary);
+  font-size: var(--body-4-font-size);
+  line-height: var(--body-4-line-height);
+  letter-spacing: var(--body-4-letter-spacing);
+}
+
+.body-4-regular { font-weight: var(--font-weight-regular); }
+.body-4-medium { font-weight: var(--font-weight-medium); }
+
+/* ----------------------------------------
+   Caption Classes
+   ---------------------------------------- */
+
+.caption-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--caption-1-font-size);
+  line-height: var(--caption-1-line-height);
+  letter-spacing: var(--caption-1-letter-spacing);
+}
+
+.caption-1-medium { font-weight: var(--font-weight-medium); }
+.caption-1-semibold { font-weight: var(--font-weight-semibold); }
+
+.caption-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--caption-2-font-size);
+  line-height: var(--caption-2-line-height);
+  letter-spacing: var(--caption-2-letter-spacing);
+}
+
+.caption-2-medium { font-weight: var(--font-weight-medium); }
+.caption-2-semibold { font-weight: var(--font-weight-semibold); }
+
+/* ----------------------------------------
+   Font Weight Utility Classes
+   ---------------------------------------- */
+
+.font-regular { font-weight: var(--font-weight-regular); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+/* ============================================
+   Dark Mode
+   ============================================ */
+
+[data-theme="dark"],
+.dark,
+:root.dark {
+  /* Primary & Accent */
+  --color-primary-accent: #5b6fe8;
+  --color-secondary-accent: #ffffff;
+
+  /* Stroke Colors */
+  --color-stroke-primary: #18213a;
+  --color-stroke-secondary: #151c31;
+  --color-stroke-tertiary: #20294e;
+  --color-stroke-error: #ef4444;
+  --color-stroke-success: #34d399;
+  --color-stroke-selection: #5b6fe8;
+  --color-stroke-active: #2f3b74;
+
+  /* Action Colors */
+  --color-action-primary: #5b6fe8;
+  --color-action-secondary: #2f3b74;
+
+  /* Misc */
+  --color-icons: #e5e7eb;
+  --color-comp-bg: #ffffff;
+  --color-selection: #ffffff;
+  --color-misc-inverse: #1f2937;
+
+  /* Background Colors */
+  --color-bg-primary: #111827;
+  --color-bg-secondary: #151c31;
+  --color-bg-tertiary: #18213a;
+  --color-bg-active: #273261;
+  --color-bg-inactive: #18213a;
+  --color-bg-overlay: rgba(255, 255, 255, 0.2);
+  --color-bg-opaque: rgba(91, 111, 232, 0.2);
+
+  /* Text Colors */
+  --color-text-inverse: #111827;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #9ca3af;
+  --color-text-tertiary: #d1d5db;
+  --color-text-link: #5b6fe8;
+  --color-text-success: #34d399;
+  --color-text-error: #ef4444;
+  --color-text-warning: #ef4444;
+  --color-text-destructive: #a24936;
+  --color-text-placeholder: rgba(255, 255, 255, 0.3);
+
+  /* Action State Colors */
+  --color-action-disabled: #4a5a9c;
+  --color-action-hover: rgba(91, 111, 232, 0.9);
+
+  /* Error/Success Backgrounds */
+  --color-bg-error: rgba(239, 68, 69, 0.15);
+  --color-bg-success: rgba(52, 211, 153, 0.15);
+
+  /* Primary RGB (for gradient alpha control) */
+  --color-primary-rgb: 91, 111, 232;
+
+  /* Shadows */
+  --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0px 10px 15px -3px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0px 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* System preference based dark mode */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not(.light) {
+    /* Primary & Accent */
+    --color-primary-accent: #5b6fe8;
+    --color-secondary-accent: #ffffff;
+
+    /* Stroke Colors */
+    --color-stroke-primary: #18213a;
+    --color-stroke-secondary: #151c31;
+    --color-stroke-tertiary: #20294e;
+    --color-stroke-error: #ef4444;
+    --color-stroke-success: #34d399;
+    --color-stroke-selection: #5b6fe8;
+    --color-stroke-active: #2f3b74;
+
+    /* Action Colors */
+    --color-action-primary: #5b6fe8;
+    --color-action-secondary: #2f3b74;
+
+    /* Misc */
+    --color-icons: #e5e7eb;
+    --color-comp-bg: #ffffff;
+    --color-selection: #ffffff;
+    --color-misc-inverse: #1f2937;
+
+    /* Background Colors */
+    --color-bg-primary: #111827;
+    --color-bg-secondary: #151c31;
+    --color-bg-tertiary: #18213a;
+    --color-bg-active: #273261;
+    --color-bg-inactive: #18213a;
+    --color-bg-overlay: rgba(255, 255, 255, 0.2);
+    --color-bg-opaque: rgba(91, 111, 232, 0.2);
+
+    /* Text Colors */
+    --color-text-inverse: #111827;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #9ca3af;
+    --color-text-tertiary: #d1d5db;
+    --color-text-link: #5b6fe8;
+    --color-text-success: #34d399;
+    --color-text-error: #ef4444;
+    --color-text-warning: #ef4444;
+    --color-text-destructive: #a24936;
+    --color-text-placeholder: rgba(255, 255, 255, 0.3);
+
+    /* Action State Colors */
+    --color-action-disabled: #4a5a9c;
+    --color-action-hover: rgba(91, 111, 232, 0.9);
+
+    /* Error/Success Backgrounds */
+    --color-bg-error: rgba(239, 68, 69, 0.15);
+    --color-bg-success: rgba(52, 211, 153, 0.15);
+
+    /* Primary RGB (for gradient alpha control) */
+    --color-primary-rgb: 91, 111, 232;
+
+    /* Shadows */
+    --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0px 10px 15px -3px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0px 20px 25px -5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ============================================
+   Spacing Utility Classes
+   ============================================ */
+
+/* Margin utilities */
+.m-0 { margin: var(--space-0); }
+.m-px { margin: var(--space-px); }
+.m-xxs { margin: var(--space-xxs); }
+.m-xs2 { margin: var(--space-xs2); }
+.m-xs { margin: var(--space-xs); }
+.m-sm { margin: var(--space-sm); }
+.m-base { margin: var(--space-base); }
+.m-md { margin: var(--space-md); }
+.m-lg { margin: var(--space-lg); }
+.m-xl { margin: var(--space-xl); }
+.m-2xl { margin: var(--space-2xl); }
+.m-3xl { margin: var(--space-3xl); }
+.m-4xl { margin: var(--space-4xl); }
+.m-5xl { margin: var(--space-5xl); }
+.m-6xl { margin: var(--space-6xl); }
+
+/* Padding utilities */
+.p-0 { padding: var(--space-0); }
+.p-px { padding: var(--space-px); }
+.p-xxs { padding: var(--space-xxs); }
+.p-xs2 { padding: var(--space-xs2); }
+.p-xs { padding: var(--space-xs); }
+.p-sm { padding: var(--space-sm); }
+.p-base { padding: var(--space-base); }
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+.p-xl { padding: var(--space-xl); }
+.p-2xl { padding: var(--space-2xl); }
+.p-3xl { padding: var(--space-3xl); }
+.p-4xl { padding: var(--space-4xl); }
+.p-5xl { padding: var(--space-5xl); }
+.p-6xl { padding: var(--space-6xl); }
+
+/* Gap utilities */
+.gap-0 { gap: var(--space-0); }
+.gap-px { gap: var(--space-px); }
+.gap-xxs { gap: var(--space-xxs); }
+.gap-xs2 { gap: var(--space-xs2); }
+.gap-xs { gap: var(--space-xs); }
+.gap-sm { gap: var(--space-sm); }
+.gap-base { gap: var(--space-base); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+.gap-xl { gap: var(--space-xl); }
+.gap-2xl { gap: var(--space-2xl); }
+.gap-3xl { gap: var(--space-3xl); }
+.gap-4xl { gap: var(--space-4xl); }
+.gap-5xl { gap: var(--space-5xl); }
+.gap-6xl { gap: var(--space-6xl); }
+
+/* ============================================
+   Border Radius Utility Classes
+   ============================================ */
+
+.rounded-none { border-radius: var(--radius-none); }
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
+.rounded-2xl { border-radius: var(--radius-2xl); }
+.rounded-3xl { border-radius: var(--radius-3xl); }
+.rounded-4xl { border-radius: var(--radius-4xl); }
+.rounded-5xl { border-radius: var(--radius-5xl); }
+.rounded-full { border-radius: var(--radius-full); }
+
+/* ============================================
+   Color Utility Classes
+   ============================================ */
+
+/* Background colors */
+.bg-primary { background-color: var(--color-bg-primary); }
+.bg-secondary { background-color: var(--color-bg-secondary); }
+.bg-tertiary { background-color: var(--color-bg-tertiary); }
+.bg-active { background-color: var(--color-bg-active); }
+.bg-inactive { background-color: var(--color-bg-inactive); }
+.bg-overlay { background-color: var(--color-bg-overlay); }
+.bg-accent { background-color: var(--color-primary-accent); }
+
+/* Text colors */
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-tertiary { color: var(--color-text-tertiary); }
+.text-link { color: var(--color-text-link); }
+.text-success { color: var(--color-text-success); }
+.text-error { color: var(--color-text-error); }
+.text-warning { color: var(--color-text-warning); }
+.text-accent { color: var(--color-primary-accent); }
+
+/* Border/Stroke colors */
+.border-primary { border-color: var(--color-stroke-primary); }
+.border-secondary { border-color: var(--color-stroke-secondary); }
+.border-error { border-color: var(--color-stroke-error); }
+.border-selection { border-color: var(--color-stroke-selection); }
+
+/* ============================================
+   Size Utility Classes
+   ============================================ */
+
+.size-0 { width: var(--size-0); height: var(--size-0); }
+.size-xxs { width: var(--size-xxs); height: var(--size-xxs); }
+.size-xs { width: var(--size-xs); height: var(--size-xs); }
+.size-sm { width: var(--size-sm); height: var(--size-sm); }
+.size-base { width: var(--size-base); height: var(--size-base); }
+.size-lg { width: var(--size-lg); height: var(--size-lg); }
+.size-xl { width: var(--size-xl); height: var(--size-xl); }
+.size-2xl { width: var(--size-2xl); height: var(--size-2xl); }
+.size-3xl { width: var(--size-3xl); height: var(--size-3xl); }
+.size-4xl { width: var(--size-4xl); height: var(--size-4xl); }
+.size-5xl { width: var(--size-5xl); height: var(--size-5xl); }
+.size-6xl { width: var(--size-6xl); height: var(--size-6xl); }
+
+/* Icon sizes */
+.icon-sm { width: var(--icon-size-sm); height: var(--icon-size-sm); }
+.icon-md { width: var(--icon-size-md); height: var(--icon-size-md); }
+.icon-lg { width: var(--icon-size-lg); height: var(--icon-size-lg); }
+
+/* ============================================
+   Shadow Utility Classes
+   ============================================ */
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+/* ============================================
+   Component Utility Classes
+   ============================================ */
+
+/* Card widths */
+.w-card-sm { width: var(--card-width-sm); }
+.w-card-md { width: var(--card-width-md); }
+.w-card-lg { width: var(--card-width-lg); }
+
+/* Card border radius */
+.rounded-card { border-radius: var(--radius-card); }
+
+/* Input height */
+.h-input { height: var(--input-height); }
+
+/* Button heights */
+.h-btn-sm { height: var(--button-height-sm); }
+.h-btn-md { height: var(--button-height-md); }
+.h-btn-lg { height: var(--button-height-lg); }
+
+/* Logo size */
+.size-logo { width: var(--logo-size); height: var(--logo-size); }
+
+/* Action colors */
+.bg-action-primary { background-color: var(--color-action-primary); }
+.bg-action-secondary { background-color: var(--color-action-secondary); }
+.bg-action-disabled { background-color: var(--color-action-disabled); }
+.hover\:bg-action-hover:hover { background-color: var(--color-action-hover); }
+
+/* Placeholder color */
+.placeholder-default::placeholder { color: var(--color-text-placeholder); }

@@ -1,0 +1,78 @@
+import { Button } from '@/components/ui';
+import { cn } from '@/utils/cn';
+import type { Subscription } from '../../types';
+
+interface SubscriptionCardProps {
+  subscription: Subscription;
+  onManageSubscription?: () => void;
+  onBillingHistory?: () => void;
+}
+
+const statusStyles: Record<Subscription['status'], string> = {
+  active: 'bg-(--color-action-primary) text-(--color-text-inverse)',
+  cancelled: 'bg-(--color-bg-tertiary) text-(--color-text-primary)',
+  past_due: 'bg-(--color-text-error) text-(--color-text-inverse)',
+};
+
+const statusLabels: Record<Subscription['status'], string> = {
+  active: 'Active',
+  cancelled: 'Cancelled',
+  past_due: 'Past Due',
+};
+
+export function SubscriptionCard({
+  subscription,
+  onManageSubscription,
+  onBillingHistory,
+}: SubscriptionCardProps) {
+  return (
+    <div className="flex flex-col gap-(--space-lg)">
+      <h3 className="h6 h6-bold text-(--color-text-primary)">Subscription</h3>
+
+      <div className="flex flex-col gap-(--space-base) p-(--space-base) sm:p-[25px] rounded-(--radius-card) border border-(--color-stroke-tertiary)">
+        <div className="flex items-start justify-between">
+          <div className="flex flex-col gap-(--space-xs2)">
+            <span className="body-1 font-semibold text-(--color-text-primary)">
+              {subscription.planName}
+            </span>
+            <p className="label-2 label-2-regular text-(--color-text-secondary)">
+              {subscription.description}
+            </p>
+          </div>
+          <span
+            className={cn(
+              'px-(--space-xs) py-(--space-xxs) rounded-lg label-3 label-3-medium shrink-0',
+              statusStyles[subscription.status]
+            )}
+          >
+            {statusLabels[subscription.status]}
+          </span>
+        </div>
+
+        <div className="flex flex-col gap-(--space-xs)">
+          <p className="label-2 label-2-regular">
+            <span className="label-2-medium text-(--color-text-primary)">Billing cycle: </span>
+            <span className="text-(--color-text-secondary)">{subscription.billingCycle}</span>
+          </p>
+          <p className="label-2 label-2-regular">
+            <span className="label-2-medium text-(--color-text-primary)">Next billing date: </span>
+            <span className="text-(--color-text-secondary)">{subscription.nextBillingDate}</span>
+          </p>
+          <p className="label-2 label-2-regular">
+            <span className="label-2-medium text-(--color-text-primary)">Amount: </span>
+            <span className="text-(--color-text-secondary)">{subscription.amount}</span>
+          </p>
+        </div>
+
+        <div className="flex flex-wrap gap-(--space-sm)">
+          <Button variant="stroke" className="h-[36px]" onClick={onManageSubscription}>
+            Manage Subscription
+          </Button>
+          <Button variant="stroke" className="h-[36px]" onClick={onBillingHistory}>
+            Billing History
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
