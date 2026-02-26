@@ -43,6 +43,7 @@ export function SignUpForm() {
           }}
           placeholder="you@example.com"
           disabled={isLoading}
+          suppressHydrationWarning
           className="body-3-regular w-full h-(--input-height) px-(--space-base) bg-(--color-bg-primary) border border-(--color-bg-tertiary) rounded-lg text-(--color-text-primary) outline-none transition-[border-color] duration-200 focus:border-(--color-stroke-selection)"
         />
       </div>
