@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { paths } from '@/config';
 import {
   HomeIcon,
@@ -14,20 +15,22 @@ import {
   ChevronRightIcon,
 } from '@/assets/icons';
 import { Logo } from './Logo';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { MenuItem } from '@/components/ui';
 import { cn } from '@/utils/cn';
-
-const navItems = [
-  { icon: HomeIcon, label: 'Dashboard', href: paths.dashboard },
-  { icon: AssistantIcon, label: 'AI Tutor', href: paths.assistant },
-  { icon: AcademyIcon, label: 'Courses', href: paths.academy },
-  { icon: LearningIcon, label: 'My Learning', href: paths.learning },
-  { icon: VideosIcon, label: 'Videos', href: paths.videos },
-];
 
 export function Sidebar() {
   const pathname = usePathname();
   const [isExpanded, setIsExpanded] = useState(false);
+  const t = useTranslations('sidebar');
+
+  const navItems = [
+    { icon: HomeIcon, label: t('dashboard'), href: paths.dashboard },
+    { icon: AssistantIcon, label: t('aiTutor'), href: paths.assistant },
+    { icon: AcademyIcon, label: t('courses'), href: paths.academy },
+    { icon: LearningIcon, label: t('myLearning'), href: paths.learning },
+    { icon: VideosIcon, label: t('videos'), href: paths.videos },
+  ];
 
   return (
     <aside
@@ -80,10 +83,11 @@ export function Sidebar() {
           isExpanded ? 'items-start' : 'items-center'
         )}
       >
-        <MenuItem icon={NotificationsIcon} label="Notifications" showLabel={isExpanded} />
+        <LanguageSwitcher isExpanded={isExpanded} />
+        <MenuItem icon={NotificationsIcon} label={t('notifications')} showLabel={isExpanded} />
         <MenuItem
           icon={AccountIcon}
-          label="Account"
+          label={t('account')}
           href={paths.account}
           isSelected={pathname === paths.account || pathname.startsWith(`${paths.account}/`)}
           showLabel={isExpanded}

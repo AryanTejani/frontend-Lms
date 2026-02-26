@@ -1,12 +1,49 @@
-import { Inter } from 'next/font/google';
+import { Inter, Noto_Sans_Devanagari, Noto_Sans_Tamil, Noto_Sans_Telugu, Noto_Sans_Kannada, Noto_Sans_Bengali } from 'next/font/google';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 import { Providers } from './providers';
 import type { Metadata, Viewport } from 'next';
 import '@/styles/globals.css';
 
 const inter = Inter({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   variable: '--font-inter',
   display: 'swap',
+});
+
+const notoDevanagari = Noto_Sans_Devanagari({
+  subsets: ['devanagari'],
+  variable: '--font-noto-devanagari',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+});
+
+const notoTamil = Noto_Sans_Tamil({
+  subsets: ['tamil'],
+  variable: '--font-noto-tamil',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+});
+
+const notoTelugu = Noto_Sans_Telugu({
+  subsets: ['telugu'],
+  variable: '--font-noto-telugu',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+});
+
+const notoKannada = Noto_Sans_Kannada({
+  subsets: ['kannada'],
+  variable: '--font-noto-kannada',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+});
+
+const notoBengali = Noto_Sans_Bengali({
+  subsets: ['bengali'],
+  variable: '--font-noto-bengali',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
@@ -64,9 +101,16 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={`${inter.variable} ${notoDevanagari.variable} ${notoTamil.variable} ${notoTelugu.variable} ${notoKannada.variable} ${notoBengali.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -75,7 +119,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen bg-(--color-bg-primary) text-(--color-text-primary) antialiased">
-        <Providers>{children}</Providers>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Providers>{children}</Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -1,30 +1,34 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { OnboardingContainer } from '../client/components/OnboardingContainer';
 import { Button } from '@/components/ui';
 import { logoutAction } from '@/features/auth/server/logout';
 import { useOnboarding } from '../client/hooks/useOnboarding';
 import {
   WelcomeStep,
-  ExperienceStep,
-  GoalsStep,
-  StyleStep,
-  TimeStep,
+  LanguageStep,
+  AgeStep,
+  GradeStep,
+  SubjectsStep,
+  LearningGoalsStep,
   SummaryStep,
-  RecommendationsStep,
 } from '../client/components';
 
 export function OnboardingView() {
+  const tc = useTranslations('common');
   const {
     currentStep,
     data,
+    isSubmitting,
     goNext,
     goBack,
     goToStep,
-    setExperienceLevel,
-    toggleLearningGoal,
-    setTradingStyle,
-    setTimeCommitment,
+    setLanguagePreference,
+    setAge,
+    setGrade,
+    toggleSubject,
+    toggleGoal,
     handleComplete,
   } = useOnboarding();
 
@@ -32,52 +36,64 @@ export function OnboardingView() {
     <OnboardingContainer>
       <div className="absolute top-4 right-4 z-10">
         <Button variant="stroke" onClick={() => logoutAction()}>
-          Sign Out
+          {tc('signOut')}
         </Button>
       </div>
 
       {currentStep === 'welcome' && <WelcomeStep onContinue={goNext} />}
 
-      {currentStep === 'experience' && (
-        <ExperienceStep
-          selected={data.experienceLevel}
-          onSelect={setExperienceLevel}
+      {currentStep === 'language' && (
+        <LanguageStep
+          selected={data.languagePreference}
+          onSelect={setLanguagePreference}
           onNext={goNext}
+        />
+      )}
+
+      {currentStep === 'age' && (
+        <AgeStep
+          value={data.age}
+          onChange={setAge}
+          onNext={goNext}
+          onBack={goBack}
+        />
+      )}
+
+      {currentStep === 'grade' && (
+        <GradeStep
+          selected={data.grade}
+          onSelect={setGrade}
+          onNext={goNext}
+          onBack={goBack}
+        />
+      )}
+
+      {currentStep === 'subjects' && (
+        <SubjectsStep
+          selected={data.subjects}
+          onToggle={toggleSubject}
+          onNext={goNext}
+          onBack={goBack}
         />
       )}
 
       {currentStep === 'goals' && (
-        <GoalsStep
+        <LearningGoalsStep
           selected={data.learningGoals}
-          onToggle={toggleLearningGoal}
-          onNext={goNext}
-          onBack={goBack}
-        />
-      )}
-
-      {currentStep === 'style' && (
-        <StyleStep
-          selected={data.tradingStyle}
-          onSelect={setTradingStyle}
-          onNext={goNext}
-          onBack={goBack}
-        />
-      )}
-
-      {currentStep === 'time' && (
-        <TimeStep
-          selected={data.timeCommitment}
-          onSelect={setTimeCommitment}
+          onToggle={toggleGoal}
           onNext={goNext}
           onBack={goBack}
         />
       )}
 
       {currentStep === 'summary' && (
-        <SummaryStep data={data} onContinue={goNext} onModify={() => goToStep('experience')} />
+        <SummaryStep
+          data={data}
+          onContinue={handleComplete}
+          onModify={() => goToStep('language')}
+          isSubmitting={isSubmitting}
+        />
       )}
-
-      {currentStep === 'recommendations' && <RecommendationsStep onComplete={handleComplete} />}
     </OnboardingContainer>
   );
 }

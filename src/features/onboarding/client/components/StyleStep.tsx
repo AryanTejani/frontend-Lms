@@ -1,38 +1,42 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { OnboardingWelcome } from './OnboardingWelcome';
 import { OnboardingProgressBar } from './OnboardingProgressBar';
 import { OnboardingQuestion } from './OnboardingQuestion';
 import { OnboardingOption } from './OnboardingOption';
 import { OnboardingInfoLabel } from './OnboardingInfoLabel';
 import { Button } from '@/components/ui';
-import { STYLE_OPTIONS } from '../../types';
+import { GRADE_OPTIONS } from '../../types';
 
-interface StyleStepProps {
+interface GradeStepProps {
   selected: string | null;
-  onSelect: (style: string) => void;
+  onSelect: (grade: string) => void;
   onNext: () => void;
   onBack: () => void;
 }
 
-export function StyleStep({ selected, onSelect, onNext, onBack }: StyleStepProps) {
+export function GradeStep({ selected, onSelect, onNext, onBack }: GradeStepProps) {
+  const t = useTranslations('onboarding.grade');
+  const tc = useTranslations('common');
+
   return (
     <div className="flex flex-col items-center max-w-[608px] mx-auto py-16 px-(--space-base)">
-      <OnboardingWelcome title="Your Trading Style" size="lg" />
+      <OnboardingWelcome title={t('heading')} size="lg" />
 
       <div className="w-full mt-[72px]">
-        <OnboardingProgressBar steps={4} currentStep={2} />
+        <OnboardingProgressBar steps={6} currentStep={2} />
       </div>
 
       <div className="w-full mt-(--space-lg)">
         <OnboardingQuestion
-          title="Which class are you in?"
-          subtitle="We'll show NCERT curriculum for your grade"
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
       </div>
 
       <div className="flex flex-col gap-(--space-sm) w-full mt-(--space-lg)">
-        {STYLE_OPTIONS.map((opt) => (
+        {GRADE_OPTIONS.map((opt) => (
           <OnboardingOption
             key={opt.title}
             title={opt.title}
@@ -50,18 +54,19 @@ export function StyleStep({ selected, onSelect, onNext, onBack }: StyleStepProps
           onClick={onBack}
           className="inline-flex items-center gap-1 label-2 label-2-semibold text-(--color-text-secondary) hover:text-(--color-text-primary) cursor-pointer bg-transparent border-none p-0 h-8 transition-colors"
         >
-          <span>←</span> Back
+          <span>&larr;</span> {tc('back')}
         </button>
         <Button onClick={onNext} disabled={!selected} className="h-8">
-          Next
+          {tc('next')}
         </Button>
       </div>
 
       <div className="mt-(--space-sm)">
-        <OnboardingInfoLabel>
-          Don&apos;t worry if you&apos;re unsure - you&apos;ll learn about all strategies
-        </OnboardingInfoLabel>
+        <OnboardingInfoLabel>{t('info')}</OnboardingInfoLabel>
       </div>
     </div>
   );
 }
+
+/** @deprecated Use GradeStep instead */
+export { GradeStep as StyleStep };

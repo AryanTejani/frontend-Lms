@@ -1,37 +1,41 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { OnboardingWelcome } from './OnboardingWelcome';
 import { OnboardingProgressBar } from './OnboardingProgressBar';
 import { OnboardingQuestion } from './OnboardingQuestion';
 import { OnboardingOption } from './OnboardingOption';
 import { Button } from '@/components/ui';
-import { GOAL_OPTIONS } from '../../types';
+import { SUBJECT_OPTIONS } from '../../types';
 
-interface GoalsStepProps {
+interface SubjectsStepProps {
   selected: string[];
-  onToggle: (goal: string) => void;
+  onToggle: (subject: string) => void;
   onNext: () => void;
   onBack: () => void;
 }
 
-export function GoalsStep({ selected, onToggle, onNext, onBack }: GoalsStepProps) {
+export function SubjectsStep({ selected, onToggle, onNext, onBack }: SubjectsStepProps) {
+  const t = useTranslations('onboarding.subjects');
+  const tc = useTranslations('common');
+
   return (
     <div className="flex flex-col items-center max-w-[608px] mx-auto py-16 px-(--space-base)">
-      <OnboardingWelcome title="Your Learning Goals" size="lg" />
+      <OnboardingWelcome title={t('heading')} size="lg" />
 
       <div className="w-full mt-[72px]">
-        <OnboardingProgressBar steps={4} currentStep={1} />
+        <OnboardingProgressBar steps={6} currentStep={3} />
       </div>
 
       <div className="w-full mt-(--space-lg)">
         <OnboardingQuestion
-          title="Which subjects do you want to study?"
-          subtitle="Select all that interest you"
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
       </div>
 
       <div className="grid grid-cols-2 gap-(--space-sm) w-full mt-(--space-lg)">
-        {GOAL_OPTIONS.map((opt) => (
+        {SUBJECT_OPTIONS.map((opt) => (
           <OnboardingOption
             key={opt.title}
             title={opt.title}
@@ -49,12 +53,15 @@ export function GoalsStep({ selected, onToggle, onNext, onBack }: GoalsStepProps
           onClick={onBack}
           className="inline-flex items-center gap-1 label-2 label-2-semibold text-(--color-text-secondary) hover:text-(--color-text-primary) cursor-pointer bg-transparent border-none p-0 h-8 transition-colors"
         >
-          <span>←</span> Back
+          <span>&larr;</span> {tc('back')}
         </button>
         <Button onClick={onNext} disabled={selected.length === 0} className="h-8">
-          Next
+          {tc('next')}
         </Button>
       </div>
     </div>
   );
 }
+
+/** @deprecated Use SubjectsStep instead */
+export { SubjectsStep as GoalsStep };

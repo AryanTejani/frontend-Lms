@@ -1,43 +1,47 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { OnboardingWelcome } from './OnboardingWelcome';
 import { OnboardingProgressBar } from './OnboardingProgressBar';
 import { OnboardingQuestion } from './OnboardingQuestion';
 import { OnboardingOption } from './OnboardingOption';
 import { OnboardingInfoLabel } from './OnboardingInfoLabel';
 import { Button } from '@/components/ui';
-import { EXPERIENCE_OPTIONS } from '../../types';
+import { LANGUAGE_OPTIONS } from '../../types';
 
-interface ExperienceStepProps {
+interface LanguageStepProps {
   selected: string | null;
-  onSelect: (level: string) => void;
+  onSelect: (code: string) => void;
   onNext: () => void;
 }
 
-export function ExperienceStep({ selected, onSelect, onNext }: ExperienceStepProps) {
+export function LanguageStep({ selected, onSelect, onNext }: LanguageStepProps) {
+  const t = useTranslations('onboarding.language');
+  const tc = useTranslations('common');
+
   return (
     <div className="flex flex-col items-center max-w-[608px] mx-auto py-16 px-(--space-base)">
-      <OnboardingWelcome title="Your Trading Experience" size="lg" />
+      <OnboardingWelcome title={t('heading')} size="lg" />
 
       <div className="w-full mt-[72px]">
-        <OnboardingProgressBar steps={4} currentStep={0} />
+        <OnboardingProgressBar steps={6} currentStep={0} />
       </div>
 
       <div className="w-full mt-(--space-lg)">
         <OnboardingQuestion
-          title="Which language do you prefer to learn in?"
-          subtitle="We'll teach every subject in your chosen language"
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
       </div>
 
       <div className="flex flex-col gap-(--space-sm) w-full mt-(--space-lg)">
-        {EXPERIENCE_OPTIONS.map((opt) => (
+        {LANGUAGE_OPTIONS.map((opt) => (
           <OnboardingOption
-            key={opt.title}
-            title={opt.title}
+            key={opt.code}
+            title={`${opt.nativeName} (${opt.title})`}
             subtitle={opt.subtitle}
-            selected={selected === opt.title}
-            onClick={() => onSelect(opt.title)}
+            selected={selected === opt.code}
+            onClick={() => onSelect(opt.code)}
             variant="radio"
           />
         ))}
@@ -45,13 +49,16 @@ export function ExperienceStep({ selected, onSelect, onNext }: ExperienceStepPro
 
       <div className="flex justify-end w-full mt-(--space-lg)">
         <Button onClick={onNext} disabled={!selected} className="h-8">
-          Next
+          {tc('next')}
         </Button>
       </div>
 
       <div className="mt-(--space-sm)">
-        <OnboardingInfoLabel>You can always change your language later</OnboardingInfoLabel>
+        <OnboardingInfoLabel>{t('info')}</OnboardingInfoLabel>
       </div>
     </div>
   );
 }
+
+/** @deprecated Use LanguageStep instead */
+export { LanguageStep as ExperienceStep };
