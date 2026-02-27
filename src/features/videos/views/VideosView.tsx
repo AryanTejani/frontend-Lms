@@ -1,21 +1,24 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { SearchBar, Button } from '@/components/ui';
 import { TabsBar } from '../client/components/TabsBar';
 import { ForYouTab, ExploreTab, MyCollectionsTab } from '../client/components';
 import { useVideos } from '../client/hooks/useVideos';
 
-const tabs = [
-  { label: 'For You', value: 'for-you' },
-  { label: 'Explore', value: 'explore' },
-  { label: 'My Collections', value: 'my-collections' },
-];
-
 export function VideosView() {
+  const t = useTranslations('videos');
+  const tc = useTranslations('common');
   const [activeTab, setActiveTab] = useState('for-you');
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
+
+  const tabs = [
+    { label: t('forYou'), value: 'for-you' },
+    { label: t('explore'), value: 'explore' },
+    { label: t('myCollections'), value: 'my-collections' },
+  ];
 
   const { data, isLoading } = useVideos(page, 20);
   const videos = data?.videos ?? [];
@@ -31,9 +34,9 @@ export function VideosView() {
       {/* Header */}
       <div className="flex flex-col gap-(--space-lg) sm:gap-(--space-2xl)">
         <div className="flex flex-col gap-(--space-base)">
-          <h4 className="h4 h4-bold text-(--color-text-primary)">Videos</h4>
+          <h4 className="h4 h4-bold text-(--color-text-primary)">{t('title')}</h4>
           <span className="label-1 label-1-medium text-(--color-text-tertiary)">
-            Explore our video library to elevate your trading skills
+            {t('subtitle')}
           </span>
         </div>
 
@@ -42,16 +45,16 @@ export function VideosView() {
             value={searchQuery}
             onChange={handleSearchChange}
             onClear={() => handleSearchChange('')}
-            placeholder="Search courses, masterclasses, and reports..."
+            placeholder={t('searchPlaceholder')}
             className="w-full sm:max-w-[506px]"
           />
           {activeTab !== 'for-you' && (
             <div className="flex items-center gap-(--space-xs)">
               <Button variant="stroke" className="h-12 w-[104px] rounded-full">
-                Filters
+                {t('filters')}
               </Button>
               <Button variant="stroke" className="h-12 w-[104px] rounded-full">
-                Sort
+                {t('sort')}
               </Button>
             </div>
           )}
@@ -75,10 +78,10 @@ export function VideosView() {
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             className="rounded-full"
           >
-            Previous
+            {t('previous')}
           </Button>
           <span className="label-1 label-1-medium text-(--color-text-tertiary)">
-            Page {page} of {totalPages}
+            {t('pageOf', { page, totalPages })}
           </span>
           <Button
             variant="stroke"
@@ -86,7 +89,7 @@ export function VideosView() {
             onClick={() => setPage((p) => p + 1)}
             className="rounded-full"
           >
-            Next
+            {tc('next')}
           </Button>
         </div>
       )}

@@ -3,9 +3,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchCourses } from '../api';
 
-export function useCourses() {
+export function useCourses(language?: string) {
   return useQuery({
-    queryKey: ['courses'],
-    queryFn: fetchCourses,
+    queryKey: ['courses', language],
+    queryFn: () => fetchCourses(language),
   });
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { useTranslations } from 'next-intl';
 import { HelpCircleIcon, TrashStrokeIcon, FileTextIcon, LogOutIcon } from '@/assets/icons';
 import { logout } from '@/features/auth/client/api';
 import { logoutAction } from '@/features/auth/server/logout';
@@ -22,6 +23,7 @@ import {
 import { useAccountProfile, useSubscription, usePurchases } from '../client/hooks';
 
 export function AccountSettingsView() {
+  const t = useTranslations('account');
   const [showChangePassword, setShowChangePassword] = useState(false);
   const [showDeleteAccount, setShowDeleteAccount] = useState(false);
   const [showRefundRequest, setShowRefundRequest] = useState(false);
@@ -58,15 +60,15 @@ export function AccountSettingsView() {
       <div className="max-w-[768px] mx-auto flex flex-col gap-(--space-lg) sm:gap-(--space-2xl)">
         {/* Page Header */}
         <div className="flex flex-col gap-(--space-xs)">
-          <h2 className="h5 h5-bold text-(--color-text-primary)">Account</h2>
+          <h2 className="h5 h5-bold text-(--color-text-primary)">{t('title')}</h2>
           <p className="label-1 label-1-medium text-(--color-text-secondary)">
-            Manage your account settings and preferences
+            {t('subtitle')}
           </p>
         </div>
 
         {/* Learning Path */}
         <div className="flex flex-col gap-(--space-lg)">
-          <h3 className="h6 h6-bold text-(--color-text-primary)">Learning Path</h3>
+          <h3 className="h6 h6-bold text-(--color-text-primary)">{t('learningPath')}</h3>
           <LearningPathCard />
         </div>
 
@@ -102,9 +104,9 @@ export function AccountSettingsView() {
           />
         ) : (
           <div className="flex flex-col gap-(--space-lg)">
-            <h3 className="h6 h6-bold text-(--color-text-primary)">Subscription</h3>
+            <h3 className="h6 h6-bold text-(--color-text-primary)">{t('subscription')}</h3>
             <p className="label-2 label-2-regular text-(--color-text-secondary)">
-              No active subscription
+              {t('noActiveSubscription')}
             </p>
           </div>
         )}
@@ -113,12 +115,12 @@ export function AccountSettingsView() {
 
         {/* Enrolled Courses */}
         <div className="flex flex-col gap-(--space-lg)">
-          <h3 className="h6 h6-bold text-(--color-text-primary)">Enrolled Courses</h3>
+          <h3 className="h6 h6-bold text-(--color-text-primary)">{t('enrolledCourses')}</h3>
           {coursesLoading ? (
             <div className="h-24 rounded-lg bg-(--color-bg-secondary) animate-pulse" />
           ) : courses.length === 0 ? (
             <p className="label-2 label-2-regular text-(--color-text-secondary)">
-              No enrolled courses
+              {t('noEnrolledCourses')}
             </p>
           ) : (
             <div className="flex flex-col gap-(--space-sm)">
@@ -133,7 +135,7 @@ export function AccountSettingsView() {
 
         {/* Theme */}
         <div className="flex flex-col gap-(--space-lg)">
-          <h3 className="h6 h6-bold text-(--color-text-primary)">Theme</h3>
+          <h3 className="h6 h6-bold text-(--color-text-primary)">{t('theme')}</h3>
           <ThemeToggle />
         </div>
 
@@ -143,24 +145,24 @@ export function AccountSettingsView() {
         <div className="flex flex-col gap-(--space-xs)">
           <AccountActionItem
             icon={HelpCircleIcon}
-            title="Help & Support"
-            subtitle="Get help with your account"
+            title={t('helpSupport')}
+            subtitle={t('helpSupportSubtitle')}
           />
           <AccountActionItem
             icon={FileTextIcon}
-            title="Privacy Policy"
-            subtitle="View our privacy policy"
+            title={t('privacyPolicy')}
+            subtitle={t('privacyPolicySubtitle')}
           />
           <AccountActionItem
             icon={LogOutIcon}
-            title="Log Out"
-            subtitle="Sign out of your account"
+            title={t('logOut')}
+            subtitle={t('logOutSubtitle')}
             onClick={handleLogout}
           />
           <AccountActionItem
             icon={TrashStrokeIcon}
-            title="Delete Account"
-            subtitle="Permanently delete your account"
+            title={t('deleteAccount')}
+            subtitle={t('deleteAccountSubtitle')}
             destructive
             onClick={() => setShowDeleteAccount(true)}
           />

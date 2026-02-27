@@ -5,6 +5,8 @@ export type { SignUpFormData, SignUpResponse, SignInFormData, SignInResponse } f
 export interface User {
   id: string;
   email: string;
+  language_preference?: string;
+  onboarding_completed?: boolean;
 }
 
 export interface AuthErrorResponse {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { TextField, Button } from '@/components/ui';
 import { EditIcon, LockIcon } from '@/assets/icons';
 import type { UserProfile } from '../../types';
@@ -11,6 +12,7 @@ interface PersonalInfoSectionProps {
 }
 
 export function PersonalInfoSection({ profile, onChangePassword }: PersonalInfoSectionProps) {
+  const t = useTranslations('account');
   const [isEditing, setIsEditing] = useState(false);
   const [fullName, setFullName] = useState(profile.fullName);
   const [username, setUsername] = useState(profile.username);
@@ -18,7 +20,7 @@ export function PersonalInfoSection({ profile, onChangePassword }: PersonalInfoS
   return (
     <div className="flex flex-col gap-(--space-lg)">
       <div className="flex items-center justify-between">
-        <h3 className="h6 h6-bold text-(--color-text-primary)">Personal Information</h3>
+        <h3 className="h6 h6-bold text-(--color-text-primary)">{t('personalInfo')}</h3>
         <button
           type="button"
           onClick={() => setIsEditing(!isEditing)}
@@ -31,14 +33,14 @@ export function PersonalInfoSection({ profile, onChangePassword }: PersonalInfoS
 
       <div className="flex flex-col gap-(--space-base)">
         <TextField
-          label="Full Name"
+          label={t('fullName')}
           value={fullName}
           onChange={setFullName}
           disabled={!isEditing}
           size="sm"
         />
         <TextField
-          label="Username"
+          label={t('username')}
           value={username}
           onChange={setUsername}
           disabled={!isEditing}
@@ -50,7 +52,7 @@ export function PersonalInfoSection({ profile, onChangePassword }: PersonalInfoS
           icon={<LockIcon className="icon-sm" />}
           onClick={onChangePassword}
         >
-          Change Password
+          {t('changePassword')}
         </Button>
       </div>
     </div>

@@ -45,6 +45,7 @@ export const LANGUAGE_OPTIONS: LanguageOption[] = [
   { code: 'mr', title: 'Marathi', nativeName: 'मराठी', subtitle: 'Maharashtra' },
   { code: 'kn', title: 'Kannada', nativeName: 'ಕನ್ನಡ', subtitle: 'Karnataka' },
   { code: 'bn', title: 'Bengali', nativeName: 'বাংলা', subtitle: 'West Bengal & Bangladesh' },
+  { code: 'gu', title: 'Gujarati', nativeName: 'ગુજરાતી', subtitle: 'Gujarat' },
 ];
 
 export const GRADE_OPTIONS: GradeOption[] = [

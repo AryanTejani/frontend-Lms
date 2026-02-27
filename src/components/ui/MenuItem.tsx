@@ -6,6 +6,7 @@ import { cn } from '@/utils';
 
 interface MenuItemProps {
   icon: React.ComponentType<IconProps>;
+  customIcon?: React.ReactNode;
   label?: string;
   isSelected?: boolean;
   showLabel?: boolean;
@@ -16,6 +17,7 @@ interface MenuItemProps {
 
 export function MenuItem({
   icon: Icon,
+  customIcon,
   label,
   isSelected = false,
   showLabel = true,
@@ -25,7 +27,7 @@ export function MenuItem({
 }: MenuItemProps) {
   const content = (
     <>
-      <Icon className="icon-lg shrink-0 text-(--color-text-primary)" />
+      {customIcon ?? <Icon className="icon-lg shrink-0 text-(--color-text-primary)" />}
       {showLabel && label && (
         <span className="label-2 label-2-medium text-(--color-text-primary)">{label}</span>
       )}

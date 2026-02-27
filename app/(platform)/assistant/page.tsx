@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { useTranslations } from 'next-intl';
 import { AIIcon } from '@/assets/icons';
 import { Chatbox, AiPrompt } from '@/components/ui';
 import { MentorChatbox, MentorModal } from '@/features/assistant/client/components';
@@ -15,6 +16,7 @@ const DEFAULT_SUGGESTIONS = [
 ];
 
 export default function AssistantPage() {
+  const t = useTranslations('assistant');
   const { selectedMentor, selectedGpt, isSearchOpen, conversationId, startNewConversation } = useAssistant();
   const [profileModal, setProfileModal] = useState<{
     type: 'gpt';
@@ -100,9 +102,9 @@ export default function AssistantPage() {
           <div className="flex items-center justify-center w-20 h-20 rounded-(--radius-2xl) bg-gradient-to-b from-[#170689] to-[#7094d7] shadow-2xl">
             <AIIcon className="w-10 h-10 text-white" />
           </div>
-          <h4 className="h4-bold text-(--color-text-primary)">VidyaSetu AI Tutor</h4>
+          <h4 className="h4-bold text-(--color-text-primary)">{t('title')}</h4>
           <p className="label-1-medium text-(--color-text-secondary)">
-            Ask any question in your language — Science, Maths, History, and more
+            {t('subtitle')}
           </p>
         </div>
 
@@ -110,13 +112,13 @@ export default function AssistantPage() {
         <div className="w-full max-w-[800px]">
           <Chatbox
             variant="default"
-            placeholder="Ask your question in any language..."
+            placeholder={t('placeholder')}
           />
         </div>
 
         {/* Ideas section */}
         <div className="flex flex-col items-center gap-(--space-base)">
-          <span className="label-2-regular text-(--color-text-primary)">Ideas to get started</span>
+          <span className="label-2-regular text-(--color-text-primary)">{t('ideasToGetStarted')}</span>
           <div className="flex flex-wrap justify-center gap-(--space-xs)">
             <AiPrompt text="Photosynthesis kya hota hai?" />
             <AiPrompt text="Explain the water cycle in simple words" />

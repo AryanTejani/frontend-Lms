@@ -9,7 +9,6 @@ export const paths = {
   academy: '/academy',
   courseDetail: (slug: string) => `/academy/${slug}` as const,
   assistant: '/assistant',
-  learning: '/learning',
   videos: '/videos',
   lessonDetail: (courseSlug: string, lessonId: string) =>
     `/academy/${courseSlug}/lessons/${lessonId}` as const,

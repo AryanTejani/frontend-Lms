@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { VideoCard } from './VideoCard';
 import type { Video } from '../../types';
 
@@ -9,6 +10,8 @@ interface ForYouTabProps {
 }
 
 export function ForYouTab({ videos, isLoading }: ForYouTabProps) {
+  const t = useTranslations('videos');
+
   if (isLoading) {
     return (
       <div className="flex justify-center py-12">
@@ -20,7 +23,7 @@ export function ForYouTab({ videos, isLoading }: ForYouTabProps) {
   if (videos.length === 0) {
     return (
       <div className="flex justify-center py-12">
-        <p className="label-1 label-1-medium text-(--color-text-tertiary)">No videos found</p>
+        <p className="label-1 label-1-medium text-(--color-text-tertiary)">{t('noVideosFound')}</p>
       </div>
     );
   }

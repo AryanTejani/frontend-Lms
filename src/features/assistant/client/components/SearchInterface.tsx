@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { cn } from '@/utils/cn';
 import { SearchBar, Button } from '@/components/ui';
 import { RecentChats } from './RecentChats';
@@ -23,26 +24,28 @@ interface SearchInterfaceProps {
 export function SearchInterface({
   searchValue,
   onSearchChange,
-  searchPlaceholder = 'Search your chats...',
+  searchPlaceholder,
   chats = [],
   onChatClick,
   onSavedChatClick,
   isSavedActive,
   className,
 }: SearchInterfaceProps) {
+  const t = useTranslations('assistant');
+  const resolvedPlaceholder = searchPlaceholder ?? t('searchChats');
   return (
     <div className={cn('flex flex-col gap-(--space-base) w-full', className)}>
       {/* Search bar */}
       <SearchBar
         value={searchValue}
         onChange={onSearchChange}
-        placeholder={searchPlaceholder}
+        placeholder={resolvedPlaceholder}
         onClear={() => onSearchChange('')}
       />
 
       {/* Header */}
       <div className="flex items-center justify-between">
-        <span className="label-2 label-2-medium text-(--color-text-secondary)">Search Results</span>
+        <span className="label-2 label-2-medium text-(--color-text-secondary)">{t('searchResults')}</span>
         <Button
           variant="stroke"
           className={cn(
@@ -53,7 +56,7 @@ export function SearchInterface({
           )}
           onClick={onSavedChatClick}
         >
-          Saved chat
+          {t('savedChat')}
         </Button>
       </div>
 

@@ -2,12 +2,14 @@
 
 import clsx from 'clsx';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { useResetPasswordForm } from '../hooks';
 import { PasswordInput } from './PasswordInput';
 import { PasswordChecklist } from './PasswordChecklist';
 import { paths } from '@/config';
 
 export function ResetPasswordForm() {
+  const t = useTranslations('auth');
   const {
     password,
     confirmPassword,
@@ -34,7 +36,7 @@ export function ResetPasswordForm() {
           href={paths.auth.forgotPassword}
           className="label-2-medium text-(--color-text-link) no-underline text-center"
         >
-          Request New Reset Link
+          {t('requestNewResetLink')}
         </Link>
       </div>
     );
@@ -44,14 +46,14 @@ export function ResetPasswordForm() {
     return (
       <div className="flex flex-col gap-(--space-base) w-full">
         <div className="body-3-regular p-(--space-base) bg-(--color-bg-success) border border-(--color-stroke-success) rounded-lg text-(--color-text-success)">
-          Your password has been reset successfully. Redirecting to sign in...
+          {t('passwordResetSuccess')}
         </div>
 
         <Link
           href={paths.auth.signIn}
           className="label-2-medium text-(--color-text-link) no-underline text-center"
         >
-          Go to Sign In
+          {t('goToSignIn')}
         </Link>
       </div>
     );
@@ -70,8 +72,8 @@ export function ResetPasswordForm() {
       <PasswordInput
         value={password}
         onChange={handlePasswordChange}
-        label="New Password"
-        placeholder="Enter new password"
+        label={t('newPassword')}
+        placeholder={t('enterNewPassword')}
         disabled={isLoading}
       />
 
@@ -80,8 +82,8 @@ export function ResetPasswordForm() {
       <PasswordInput
         value={confirmPassword}
         onChange={handleConfirmPasswordChange}
-        label="Confirm Password"
-        placeholder="Confirm new password"
+        label={t('confirmPassword')}
+        placeholder={t('confirmNewPassword')}
         disabled={isLoading}
       />
 
@@ -96,17 +98,17 @@ export function ResetPasswordForm() {
         )}
       >
         {isLoading
-          ? 'Resetting...'
+          ? t('resetting')
           : retryAfter > 0
-            ? `Try again in ${String(retryAfter)}s`
-            : 'Reset Password'}
+            ? t('tryAgainIn', { seconds: retryAfter })
+            : t('resetPassword')}
       </button>
 
       <Link
         href={paths.auth.signIn}
         className="label-2-medium text-(--color-text-link) no-underline text-center"
       >
-        Back to Sign In
+        {t('backToSignIn')}
       </Link>
     </form>
   );

@@ -3,10 +3,12 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useId } from 'react';
+import { useTranslations } from 'next-intl';
 import { useForgotPasswordForm } from '../hooks';
 import { paths } from '@/config';
 
 export function ForgotPasswordForm() {
+  const t = useTranslations('auth');
   const emailInputId = useId();
   const {
     email,
@@ -24,15 +26,14 @@ export function ForgotPasswordForm() {
     return (
       <div className="flex flex-col gap-(--space-base) w-full">
         <div className="body-3-regular p-(--space-base) bg-(--color-bg-success) border border-(--color-stroke-success) rounded-lg text-(--color-text-success)">
-          Check your email for a link to reset your password. If it doesn&apos;t appear within a few
-          minutes, check your spam folder.
+          {t('resetEmailSent')}
         </div>
 
         <Link
           href={paths.auth.signIn}
           className="label-2-medium text-(--color-text-link) no-underline text-center"
         >
-          Return to Sign In
+          {t('returnToSignIn')}
         </Link>
       </div>
     );
@@ -58,7 +59,7 @@ export function ForgotPasswordForm() {
 
       <div className="flex flex-col gap-(--space-xs)">
         <label htmlFor={emailInputId} className="label-1-regular text-(--color-text-primary)">
-          Email address
+          {t('emailAddress')}
         </label>
         <input
           id={emailInputId}
@@ -67,7 +68,7 @@ export function ForgotPasswordForm() {
           onChange={(e) => {
             handleEmailChange(e.target.value);
           }}
-          placeholder="you@example.com"
+          placeholder={t('emailPlaceholder')}
           disabled={isLoading}
           className="body-3-regular w-full h-(--input-height) px-(--space-base) bg-(--color-bg-primary) border border-(--color-bg-tertiary) rounded-lg text-(--color-text-primary) outline-none transition-[border-color] duration-200 focus:border-(--color-stroke-selection)"
         />
@@ -84,17 +85,17 @@ export function ForgotPasswordForm() {
         )}
       >
         {isLoading
-          ? 'Sending...'
+          ? t('sending')
           : retryAfter > 0
-            ? `Try again in ${String(retryAfter)}s`
-            : 'Send Reset Link'}
+            ? t('tryAgainIn', { seconds: retryAfter })
+            : t('sendResetLink')}
       </button>
 
       <Link
         href={paths.auth.signIn}
         className="label-2-medium text-(--color-text-link) no-underline text-center"
       >
-        Back to Sign In
+        {t('backToSignIn')}
       </Link>
     </form>
   );

@@ -8,7 +8,6 @@ import {
   HomeIcon,
   AcademyIcon,
   AssistantIcon,
-  LearningIcon,
   VideosIcon,
   NotificationsIcon,
   AccountIcon,
@@ -18,12 +17,24 @@ import { Logo } from './Logo';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MenuItem } from '@/components/ui';
 import { cn } from '@/utils/cn';
+import type { Locale } from '@/i18n/config';
+import { useAccountProfile } from '@/features/account/client/hooks/useAccountProfile';
+import { Avatar } from '@/features/account/client/components/Avatar';
 
-export function Sidebar({ defaultExpanded = false }: { defaultExpanded?: boolean }) {
+export function Sidebar({ defaultExpanded = false, initialLocale }: { defaultExpanded?: boolean; initialLocale?: Locale }) {
   const pathname = usePathname();
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const [hasMounted, setHasMounted] = useState(false);
   const t = useTranslations('sidebar');
+  const { data: profile } = useAccountProfile();
+
+  const avatarUrl = profile?.avatarUrl;
+  const initials = profile?.fullName
+    ?.split(' ')
+    .map((w) => w[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
 
   useEffect(() => {
     setHasMounted(true);
@@ -40,7 +51,6 @@ export function Sidebar({ defaultExpanded = false }: { defaultExpanded?: boolean
     { icon: HomeIcon, label: t('dashboard'), href: paths.dashboard },
     { icon: AssistantIcon, label: t('aiTutor'), href: paths.assistant },
     { icon: AcademyIcon, label: t('courses'), href: paths.academy },
-    { icon: LearningIcon, label: t('myLearning'), href: paths.learning },
     { icon: VideosIcon, label: t('videos'), href: paths.videos },
   ];
 
@@ -96,10 +106,11 @@ export function Sidebar({ defaultExpanded = false }: { defaultExpanded?: boolean
           isExpanded ? 'items-start' : 'items-center'
         )}
       >
-        <LanguageSwitcher isExpanded={isExpanded} />
+        <LanguageSwitcher isExpanded={isExpanded} initialLocale={initialLocale} />
         <MenuItem icon={NotificationsIcon} label={t('notifications')} showLabel={isExpanded} />
         <MenuItem
           icon={AccountIcon}
+          customIcon={avatarUrl ? <Avatar src={avatarUrl} initials={initials} size={24} /> : undefined}
           label={t('account')}
           href={paths.account}
           isSelected={pathname === paths.account || pathname.startsWith(`${paths.account}/`)}

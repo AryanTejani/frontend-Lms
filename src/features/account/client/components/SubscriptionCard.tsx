@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui';
 import { cn } from '@/utils/cn';
 import type { Subscription } from '../../types';
@@ -16,12 +17,6 @@ const statusStyles: Record<Subscription['status'], string> = {
   past_due: 'bg-(--color-text-error) text-(--color-text-inverse)',
 };
 
-const statusLabels: Record<Subscription['status'], string> = {
-  active: 'Active',
-  cancelled: 'Cancelled',
-  past_due: 'Past Due',
-};
-
 export function SubscriptionCard({
   subscription,
   onManageSubscription,
@@ -29,9 +24,17 @@ export function SubscriptionCard({
   onRequestRefund,
   onUpgradePlan,
 }: SubscriptionCardProps) {
+  const t = useTranslations('account');
+
+  const statusLabels: Record<Subscription['status'], string> = {
+    active: t('statusActive'),
+    cancelled: t('statusCancelled'),
+    past_due: t('statusPastDue'),
+  };
+
   return (
     <div className="flex flex-col gap-(--space-lg)">
-      <h3 className="h6 h6-bold text-(--color-text-primary)">Subscription</h3>
+      <h3 className="h6 h6-bold text-(--color-text-primary)">{t('subscription')}</h3>
 
       <div className="flex flex-col gap-(--space-base) p-(--space-base) sm:p-[25px] rounded-(--radius-card) border border-(--color-stroke-tertiary)">
         <div className="flex items-start justify-between">
@@ -55,33 +58,33 @@ export function SubscriptionCard({
 
         <div className="flex flex-col gap-(--space-xs)">
           <p className="label-2 label-2-regular">
-            <span className="label-2-medium text-(--color-text-primary)">Billing cycle: </span>
+            <span className="label-2-medium text-(--color-text-primary)">{t('billingCycle')} </span>
             <span className="text-(--color-text-secondary)">{subscription.billingCycle}</span>
           </p>
           <p className="label-2 label-2-regular">
-            <span className="label-2-medium text-(--color-text-primary)">Next billing date: </span>
+            <span className="label-2-medium text-(--color-text-primary)">{t('nextBillingDate')} </span>
             <span className="text-(--color-text-secondary)">{subscription.nextBillingDate}</span>
           </p>
           <p className="label-2 label-2-regular">
-            <span className="label-2-medium text-(--color-text-primary)">Amount: </span>
+            <span className="label-2-medium text-(--color-text-primary)">{t('amount')} </span>
             <span className="text-(--color-text-secondary)">{subscription.amount}</span>
           </p>
         </div>
 
         <div className="flex flex-wrap gap-(--space-sm)">
           <Button variant="stroke" className="h-[36px]" onClick={onManageSubscription}>
-            Manage Subscription
+            {t('manageSubscription')}
           </Button>
           <Button variant="stroke" className="h-[36px]" onClick={onBillingHistory}>
-            Billing History
+            {t('billingHistory')}
           </Button>
           {subscription.status === 'active' && (
             <>
               <Button variant="stroke" className="h-[36px]" onClick={onUpgradePlan}>
-                Upgrade Plan
+                {t('upgradePlan')}
               </Button>
               <Button variant="stroke" className="h-[36px]" onClick={onRequestRefund}>
-                Request Refund
+                {t('requestRefund')}
               </Button>
             </>
           )}

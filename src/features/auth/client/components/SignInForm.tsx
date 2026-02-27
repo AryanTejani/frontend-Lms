@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useId } from 'react';
+import { useTranslations } from 'next-intl';
 import { useSignInForm } from '../hooks';
 import { AuthDivider } from './AuthDivider';
 import { PasswordInput } from './PasswordInput';
@@ -10,6 +11,7 @@ import { SocialAuthButtons } from './SocialAuthButtons';
 import { paths } from '@/config';
 
 export function SignInForm() {
+  const t = useTranslations('auth');
   const emailInputId = useId();
   const rememberMeId = useId();
   const {
@@ -35,7 +37,7 @@ export function SignInForm() {
 
       <div className="flex flex-col gap-(--space-xs)">
         <label htmlFor={emailInputId} className="label-1-regular text-(--color-text-primary)">
-          Email address
+          {t('emailAddress')}
         </label>
         <input
           id={emailInputId}
@@ -44,7 +46,7 @@ export function SignInForm() {
           onChange={(e) => {
             handleEmailChange(e.target.value);
           }}
-          placeholder="you@example.com"
+          placeholder={t('emailPlaceholder')}
           disabled={isLoading}
           className="label-1-regular w-full h-(--input-height) px-(--space-base) bg-(--color-bg-primary) border border-(--color-bg-tertiary) rounded-lg text-(--color-text-primary) placeholder-default outline-none transition-[border-color] duration-200 focus:border-(--color-stroke-selection)"
         />
@@ -53,7 +55,7 @@ export function SignInForm() {
       <PasswordInput
         value={password}
         onChange={handlePasswordChange}
-        placeholder="Enter your password"
+        placeholder={t('enterPassword')}
         disabled={isLoading}
       />
 
@@ -69,14 +71,14 @@ export function SignInForm() {
             disabled={isLoading}
             className="size-[14px] rounded-md border border-(--color-stroke-primary) bg-(--color-bg-primary) cursor-pointer accent-(--color-action-primary)"
           />
-          <span className="label-1-regular text-(--color-text-secondary)">Remember me</span>
+          <span className="label-1-regular text-(--color-text-secondary)">{t('rememberMe')}</span>
         </label>
 
         <Link
           href={paths.auth.forgotPassword}
           className="label-1-regular text-(--color-text-link) no-underline hover:underline"
         >
-          Forgot password?
+          {t('forgotPasswordLink')}
         </Link>
       </div>
 
@@ -90,10 +92,10 @@ export function SignInForm() {
             : 'bg-action-disabled cursor-not-allowed'
         )}
       >
-        {isLoading ? 'Signing in...' : 'Sign In'}
+        {isLoading ? t('signingIn') : t('signIn')}
       </button>
 
-      <AuthDivider text="Or Sign in with" />
+      <AuthDivider text={t('orSignInWith')} />
 
       <SocialAuthButtons />
     </form>

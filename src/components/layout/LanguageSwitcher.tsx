@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { LOCALE_COOKIE_NAME } from '@/i18n/config';
+import { defaultLocale } from '@/i18n/config';
 import { setLocale } from '@/i18n/set-locale';
 import { updateLanguagePreference } from '@/features/onboarding/client/api';
 import type { Locale } from '@/i18n/config';
@@ -17,21 +17,14 @@ const LANGUAGES: { code: Locale; native: string }[] = [
   { code: 'bn', native: 'বাংলা' },
 ];
 
-function getCurrentLocale(): Locale {
-  if (typeof document === 'undefined') return 'en';
-
-  const match = document.cookie.match(new RegExp(`(?:^|;\\s*)${LOCALE_COOKIE_NAME}=([^;]*)`));
-
-  return (match?.[1] as Locale) ?? 'en';
-}
-
 interface LanguageSwitcherProps {
   isExpanded: boolean;
+  initialLocale?: Locale;
 }
 
-export function LanguageSwitcher({ isExpanded }: LanguageSwitcherProps) {
+export function LanguageSwitcher({ isExpanded, initialLocale }: LanguageSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const current = getCurrentLocale();
+  const [current, setCurrent] = useState<Locale>(initialLocale ?? defaultLocale);
   const currentLang = LANGUAGES.find((l) => l.code === current) ?? LANGUAGES[0]!;
   const ref = useRef<HTMLDivElement>(null);
 
@@ -55,6 +48,7 @@ export function LanguageSwitcher({ isExpanded }: LanguageSwitcherProps) {
     }
 
     setIsOpen(false);
+    setCurrent(code);
     updateLanguagePreference(code).catch(() => {});
     setLocale(code);
   };

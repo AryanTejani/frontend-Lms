@@ -7,8 +7,9 @@ import type {
   QuizRecord,
 } from '../types';
 
-export async function fetchCourses(): Promise<PaginatedCourseResponse> {
-  const response = await api.get<PaginatedCourseResponse>('/courses');
+export async function fetchCourses(language?: string): Promise<PaginatedCourseResponse> {
+  const params = language ? { language } : undefined;
+  const response = await api.get<PaginatedCourseResponse>('/courses', { params });
   return response.data;
 }
 

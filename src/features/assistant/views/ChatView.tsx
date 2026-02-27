@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState, useCallback } from 'react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import {
   ContentCopyIcon,
@@ -134,6 +135,7 @@ function processImageFile(file: File, onImage: (img: ChatMessageImage & { name: 
 }
 
 export function ChatView() {
+  const t = useTranslations('assistant');
   const { selectedMentor, selectedGpt, conversationId, pendingMessage, clearPendingMessage, bumpConversationVersion } = useAssistant();
   const scrollRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -405,7 +407,7 @@ export function ChatView() {
         <div className="absolute inset-0 z-40 flex items-center justify-center bg-(--color-bg-primary)/80 backdrop-blur-sm border-2 border-dashed border-(--color-accent-green) rounded-xl pointer-events-none">
           <div className="flex flex-col items-center gap-(--space-sm)">
             <UploadIcon className="w-12 h-12 text-(--color-accent-green)" />
-            <p className="label-1 label-1-medium text-(--color-accent-green)">Drop image here</p>
+            <p className="label-1 label-1-medium text-(--color-accent-green)">{t('dropImageHere')}</p>
           </div>
         </div>
       )}
@@ -434,7 +436,7 @@ export function ChatView() {
             <VolumeUpIcon className="icon-xs" />
             <span className="label-3 label-3-medium capitalize">{ttsGender}</span>
           </button>
-          <Button variant="no-border">Save chat</Button>
+          <Button variant="no-border">{t('saveChat')}</Button>
         </div>
       </div>
 
@@ -488,7 +490,7 @@ export function ChatView() {
           {isAnalyzingImage && (
             <div className="flex items-center gap-(--space-xs) px-(--space-base) py-(--space-sm) text-(--color-text-secondary)">
               <span className="size-2 rounded-full bg-(--color-accent-green) animate-pulse" />
-              <span className="label-2 label-2-regular">Analyzing image...</span>
+              <span className="label-2 label-2-regular">{t('analyzingImage')}</span>
             </div>
           )}
         </div>
@@ -520,7 +522,7 @@ export function ChatView() {
               onClick={() => setPendingImage(null)}
               className="label-2 label-2-medium text-red-500 bg-transparent border-none cursor-pointer hover:text-red-400 shrink-0"
             >
-              Remove
+              {t('remove')}
             </button>
           </div>
         </div>
@@ -530,7 +532,7 @@ export function ChatView() {
       <div className="shrink-0 max-w-[800px] mx-auto w-full px-(--space-base) pb-(--space-lg) pt-(--space-sm)">
         <Chatbox
           variant="compact"
-          placeholder={isListening ? 'Listening... speak now' : 'Ask your question in any language...'}
+          placeholder={isListening ? t('listeningSpeak') : t('placeholder')}
           onSubmit={handleSubmit}
           value={chatboxValue}
           leftActions={leftActions}

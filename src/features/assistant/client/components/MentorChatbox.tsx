@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
 import { cn } from '@/utils/cn';
 import { AIIcon } from '@/assets/icons';
 import { AiPrompt, Chatbox } from '@/components/ui';
@@ -20,12 +21,14 @@ export function MentorChatbox({
   icon,
   profileHref,
   onViewProfile,
-  placeholder = 'Ask your question in any language...',
+  placeholder,
   suggestions = [],
   onSubmit,
   onSuggestionClick,
   className,
 }: MentorChatboxProps) {
+  const t = useTranslations('assistant');
+  const resolvedPlaceholder = placeholder ?? t('placeholder');
   return (
     <div
       className={cn(
@@ -46,7 +49,7 @@ export function MentorChatbox({
               onClick={onViewProfile}
               className="label-1 label-1-medium text-(--color-text-link) no-underline hover:underline cursor-pointer"
             >
-              View Profile
+              {t('viewProfile')}
             </a>
           )}
         </div>
@@ -54,12 +57,12 @@ export function MentorChatbox({
 
       {/* Chatbox + suggestions */}
       <div className="flex flex-col items-center gap-(--space-base) w-full max-w-[800px]">
-        <Chatbox placeholder={placeholder} onSubmit={onSubmit} className="w-full" />
+        <Chatbox placeholder={resolvedPlaceholder} onSubmit={onSubmit} className="w-full" />
 
         {suggestions.length > 0 && (
           <div className="flex flex-col items-center gap-(--space-xs) w-full">
             <span className="label-2 label-2-regular text-(--color-text-primary)">
-              Ideas to get started
+              {t('ideasToGetStarted')}
             </span>
             <div className="flex items-center justify-center gap-(--space-xs) flex-wrap">
               {suggestions.map((text) => (

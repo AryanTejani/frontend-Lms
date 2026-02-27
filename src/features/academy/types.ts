@@ -78,6 +78,7 @@ export interface CourseRecord {
   thumbnail_url: string | null;
   amount_cents: number;
   currency: string;
+  language: string;
   content_type: string;
   instructor_id: string | null;
   is_published: boolean;

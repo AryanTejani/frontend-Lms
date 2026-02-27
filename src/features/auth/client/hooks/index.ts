@@ -1,3 +1,4 @@
+export { useCurrentUser } from './useCurrentUser';
 export { useForgotPasswordForm } from './useForgotPasswordForm';
 export { useResetPasswordForm } from './useResetPasswordForm';
 export { useSignInForm } from './useSignInForm';

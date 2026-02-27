@@ -25,7 +25,7 @@ export function HeroSection() {
 
         <div className="flex gap-(--space-sm) justify-center flex-wrap mt-(--space-sm)">
           <AiPrompt text="Photosynthesis ante enti?" />
-          <AiPrompt text="\u0926\u094B \u0914\u0930 \u0926\u094B \u0915\u093F\u0924\u0928\u0947 \u0939\u094B\u0924\u0947 \u0939\u0948\u0902?" />
+          <AiPrompt text="Explain the water cycle in simple words" />
           <AiPrompt text="Explain water cycle for Class 5" />
         </div>
       </div>

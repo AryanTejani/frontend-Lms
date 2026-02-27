@@ -153,7 +153,6 @@ export { default as GoToIcon } from '@/assets/icons/custom/Go-to.svg';
 export { default as HeartFilledIcon } from '@/assets/icons/custom/Heart_filled.svg';
 export { default as HeartIcon } from '@/assets/icons/custom/Heart.svg';
 export { default as HomeIcon } from '@/assets/icons/custom/hugeicons_home-07.svg';
-export { default as LearningIcon } from '@/assets/icons/custom/Learning.svg';
 export { default as LockIcon } from '@/assets/icons/custom/Lock.svg';
 export { default as NewChatIcon } from '@/assets/icons/custom/New chat.svg';
 export { default as NotePencilDuotoneIcon } from '@/assets/icons/custom/note-pencil-duotone.svg';
