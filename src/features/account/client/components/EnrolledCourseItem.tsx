@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui';
 import { cn } from '@/utils/cn';
+import { paths } from '@/config/paths';
 import type { EnrolledCourse } from '../../types';
 
 interface EnrolledCourseItemProps {
@@ -29,7 +30,13 @@ export function EnrolledCourseItem({ course }: EnrolledCourseItemProps) {
           Completed
         </span>
       ) : (
-        <Button variant="no-border" className="text-(--color-action-primary) shrink-0">
+        <Button
+          variant="no-border"
+          className="text-(--color-action-primary) shrink-0"
+          onClick={() =>
+            window.open(paths.courseDetail(course.product_slug ?? course.id), '_blank')
+          }
+        >
           Continue
         </Button>
       )}

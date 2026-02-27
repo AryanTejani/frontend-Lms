@@ -22,6 +22,7 @@ export const mockCourses: EnrolledCourse[] = [
     completedLessons: 16,
     totalLessons: 24,
     percentComplete: 67,
+    product_slug: null,
   },
   {
     id: '2',
@@ -29,6 +30,7 @@ export const mockCourses: EnrolledCourse[] = [
     completedLessons: 6,
     totalLessons: 18,
     percentComplete: 34,
+    product_slug: null,
   },
   {
     id: '3',
@@ -36,5 +38,6 @@ export const mockCourses: EnrolledCourse[] = [
     completedLessons: 20,
     totalLessons: 20,
     percentComplete: 100,
+    product_slug: null,
   },
 ];

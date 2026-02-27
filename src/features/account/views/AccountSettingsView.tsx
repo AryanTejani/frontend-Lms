@@ -15,12 +15,22 @@ import {
   AccountActionItem,
   ChangePasswordModal,
   DeleteAccountModal,
+  RefundRequestModal,
+  BillingHistoryModal,
+  UpgradePlanModal,
 } from '../client/components';
-import { mockProfile, mockSubscription, mockCourses } from '../mockData';
+import { useAccountProfile, useSubscription, usePurchases } from '../client/hooks';
 
 export function AccountSettingsView() {
   const [showChangePassword, setShowChangePassword] = useState(false);
   const [showDeleteAccount, setShowDeleteAccount] = useState(false);
+  const [showRefundRequest, setShowRefundRequest] = useState(false);
+  const [showBillingHistory, setShowBillingHistory] = useState(false);
+  const [showUpgradePlan, setShowUpgradePlan] = useState(false);
+
+  const { data: profile, isLoading: profileLoading } = useAccountProfile();
+  const { data: subscription, isLoading: subscriptionLoading } = useSubscription();
+  const { data: courses = [], isLoading: coursesLoading } = usePurchases();
 
   const handleLogout = async (): Promise<void> => {
     try {
@@ -39,6 +49,9 @@ export function AccountSettingsView() {
       // Portal may fail if no Stripe customer exists yet
     }
   }, []);
+
+  const fallbackProfile = { fullName: '…', username: '…' };
+  const displayProfile = profile ?? fallbackProfile;
 
   return (
     <div className="flex-1 overflow-y-auto py-(--space-lg) sm:py-(--space-3xl) px-(--space-base) sm:px-(--space-lg)">
@@ -60,35 +73,60 @@ export function AccountSettingsView() {
         <hr className="border-(--color-stroke-tertiary) border-t" />
 
         {/* Profile Photo */}
-        <ProfilePhotoSection profile={mockProfile} />
+        <ProfilePhotoSection profile={displayProfile} />
 
         <hr className="border-(--color-stroke-tertiary) border-t" />
 
         {/* Personal Information */}
-        <PersonalInfoSection
-          profile={mockProfile}
-          onChangePassword={() => setShowChangePassword(true)}
-        />
+        {profileLoading ? (
+          <div className="h-24 rounded-lg bg-(--color-bg-secondary) animate-pulse" />
+        ) : (
+          <PersonalInfoSection
+            profile={displayProfile}
+            onChangePassword={() => setShowChangePassword(true)}
+          />
+        )}
 
         <hr className="border-(--color-stroke-tertiary) border-t" />
 
         {/* Subscription */}
-        <SubscriptionCard
-          subscription={mockSubscription}
-          onManageSubscription={() => void handleManageSubscription()}
-          onBillingHistory={() => void handleManageSubscription()}
-        />
+        {subscriptionLoading ? (
+          <div className="h-40 rounded-lg bg-(--color-bg-secondary) animate-pulse" />
+        ) : subscription ? (
+          <SubscriptionCard
+            subscription={subscription}
+            onManageSubscription={() => void handleManageSubscription()}
+            onBillingHistory={() => setShowBillingHistory(true)}
+            onRequestRefund={() => setShowRefundRequest(true)}
+            onUpgradePlan={() => setShowUpgradePlan(true)}
+          />
+        ) : (
+          <div className="flex flex-col gap-(--space-lg)">
+            <h3 className="h6 h6-bold text-(--color-text-primary)">Subscription</h3>
+            <p className="label-2 label-2-regular text-(--color-text-secondary)">
+              No active subscription
+            </p>
+          </div>
+        )}
 
         <hr className="border-(--color-stroke-tertiary) border-t" />
 
         {/* Enrolled Courses */}
         <div className="flex flex-col gap-(--space-lg)">
           <h3 className="h6 h6-bold text-(--color-text-primary)">Enrolled Courses</h3>
-          <div className="flex flex-col gap-(--space-sm)">
-            {mockCourses.map((course) => (
-              <EnrolledCourseItem key={course.id} course={course} />
-            ))}
-          </div>
+          {coursesLoading ? (
+            <div className="h-24 rounded-lg bg-(--color-bg-secondary) animate-pulse" />
+          ) : courses.length === 0 ? (
+            <p className="label-2 label-2-regular text-(--color-text-secondary)">
+              No enrolled courses
+            </p>
+          ) : (
+            <div className="flex flex-col gap-(--space-sm)">
+              {courses.map((course) => (
+                <EnrolledCourseItem key={course.id} course={course} />
+              ))}
+            </div>
+          )}
         </div>
 
         <hr className="border-(--color-stroke-tertiary) border-t" />
@@ -135,6 +173,14 @@ export function AccountSettingsView() {
         <DeleteAccountModal
           onConfirm={() => setShowDeleteAccount(false)}
           onCancel={() => setShowDeleteAccount(false)}
+        />
+      )}
+      {showRefundRequest && <RefundRequestModal onClose={() => setShowRefundRequest(false)} />}
+      {showBillingHistory && <BillingHistoryModal onClose={() => setShowBillingHistory(false)} />}
+      {showUpgradePlan && (
+        <UpgradePlanModal
+          currentSubscription={subscription ?? null}
+          onClose={() => setShowUpgradePlan(false)}
         />
       )}
     </div>
