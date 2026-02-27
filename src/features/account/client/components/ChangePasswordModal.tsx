@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { TextField, Button } from '@/components/ui';
 import { changePasswordSchema } from '../../schemas';
+import { changePassword } from '../api';
 
 interface ChangePasswordModalProps {
   onClose: () => void;
@@ -13,8 +14,9 @@ export function ChangePasswordModal({ onClose }: ChangePasswordModalProps) {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSave = () => {
+  const handleSave = async (): Promise<void> => {
     const result = changePasswordSchema.safeParse({
       currentPassword,
       newPassword,
@@ -23,18 +25,31 @@ export function ChangePasswordModal({ onClose }: ChangePasswordModalProps) {
 
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
+
       for (const issue of result.error.issues) {
         const field = issue.path[0];
+
         if (typeof field === 'string') {
           fieldErrors[field] = issue.message;
         }
       }
+
       setErrors(fieldErrors);
+
       return;
     }
 
     setErrors({});
-    onClose();
+    setIsLoading(true);
+
+    try {
+      await changePassword({ current_password: currentPassword, new_password: newPassword });
+      onClose();
+    } catch {
+      setErrors({ currentPassword: 'Current password is incorrect' });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -73,11 +88,11 @@ export function ChangePasswordModal({ onClose }: ChangePasswordModalProps) {
         </div>
 
         <div className="flex justify-end gap-(--space-xs2)">
-          <Button variant="stroke" onClick={onClose} className="rounded-full">
+          <Button variant="stroke" onClick={onClose} className="rounded-full" disabled={isLoading}>
             Cancel
           </Button>
-          <Button onClick={handleSave} className="rounded-full">
-            Save
+          <Button onClick={handleSave} className="rounded-full" disabled={isLoading}>
+            {isLoading ? 'Saving…' : 'Save'}
           </Button>
         </div>
       </div>

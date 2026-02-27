@@ -15,4 +15,3 @@ export { AccountSettingsView } from './views';
 export { changePasswordSchema, type ChangePasswordFormData } from './schemas';
 
 export type { UserProfile, Subscription, EnrolledCourse } from './types';
-export { mockProfile, mockSubscription, mockCourses } from './mockData';

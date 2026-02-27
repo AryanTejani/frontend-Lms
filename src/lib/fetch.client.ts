@@ -14,7 +14,7 @@ api.interceptors.response.use(
   (response) => response,
   (error: unknown) => {
     if (axios.isAxiosError(error) && error.response?.status === 401) {
-      const authPaths = ['/sign-in', '/sign-up', '/forgot-password'];
+      const authPaths = ['/sign-in', '/sign-up', '/forgot-password', '/reset-password-required'];
       const isOnAuthPage = authPaths.some((path) => window.location.pathname.startsWith(path));
       if (!isOnAuthPage) {
         window.location.href = '/sign-in';

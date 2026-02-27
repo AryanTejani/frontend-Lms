@@ -9,3 +9,6 @@ export { ChangePasswordModal } from './ChangePasswordModal';
 export { DeleteAccountModal } from './DeleteAccountModal';
 export { Avatar } from './Avatar';
 export { AlertModal } from './AlertModal';
+export { RefundRequestModal } from './RefundRequestModal';
+export { BillingHistoryModal } from './BillingHistoryModal';
+export { UpgradePlanModal } from './UpgradePlanModal';

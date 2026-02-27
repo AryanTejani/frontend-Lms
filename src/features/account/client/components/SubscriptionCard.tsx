@@ -6,6 +6,8 @@ interface SubscriptionCardProps {
   subscription: Subscription;
   onManageSubscription?: () => void;
   onBillingHistory?: () => void;
+  onRequestRefund?: () => void;
+  onUpgradePlan?: () => void;
 }
 
 const statusStyles: Record<Subscription['status'], string> = {
@@ -24,6 +26,8 @@ export function SubscriptionCard({
   subscription,
   onManageSubscription,
   onBillingHistory,
+  onRequestRefund,
+  onUpgradePlan,
 }: SubscriptionCardProps) {
   return (
     <div className="flex flex-col gap-(--space-lg)">
@@ -71,6 +75,16 @@ export function SubscriptionCard({
           <Button variant="stroke" className="h-[36px]" onClick={onBillingHistory}>
             Billing History
           </Button>
+          {subscription.status === 'active' && (
+            <>
+              <Button variant="stroke" className="h-[36px]" onClick={onUpgradePlan}>
+                Upgrade Plan
+              </Button>
+              <Button variant="stroke" className="h-[36px]" onClick={onRequestRefund}>
+                Request Refund
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </div>
