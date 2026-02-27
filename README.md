@@ -163,9 +163,25 @@ npm run dev   # Starts on port 3000
 
 ---
 
-## 🚧 GAP ANALYSIS — Web vs. What Exists
+## 📐 Important API Response Field Names
 
-Features the **backend has** that the web portal is **fully using**:
+The backend `CourseProductRecord` (used by both frontend and mobile) returns:
+
+| JSON Field | Type | Notes |
+| :--- | :--- | :--- |
+| `product_name` | `string` | Course title — **not** `title` |
+| `product_slug` | `string` | URL slug — **not** `slug` |
+| `product_description` | `string` | Description — **not** `description` |
+| `amount_cents` | `number` | Price in paise/cents. `0` = free |
+| `has_access` | `boolean` | Whether authenticated user can view content |
+| `lesson_count` | `number` | Total lessons across all sections |
+| `sections[]` → `lessons[]` | array | Nested lessons. Each lesson has `embed_url` for Bunny video |
+
+> The web portal handles these via typed API clients. When adding new screens to the mobile app (`Arise`), use these field names directly.
+
+---
+
+## 🚧 Integration Status
 
 | Feature | Status |
 | :--- | :--- |
@@ -179,4 +195,4 @@ Features the **backend has** that the web portal is **fully using**:
 | Onboarding | ✅ Full |
 | AI Assistant (4 tutors) | ✅ Full |
 
-> The web frontend is the **reference implementation**. When adding features to the Arise mobile app, look here first to understand the expected data shape and UX flow.
+> The web frontend is the **reference implementation**. When adding features to the Arise mobile app, check this codebase first to understand expected data shapes and UX flows.
