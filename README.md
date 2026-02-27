@@ -1,27 +1,63 @@
-# VidyaSetu Frontend LMS — Complete Feature & API Reference
+# VidyaSetu Frontend — Student Portal
 
-Next.js student web portal for the VidyaSetu platform. Connects to **Backend LMS Core API (Port 5000)** directly via session cookies.
+The student-facing web application for **VidyaSetu**, an AI-powered multilingual learning platform for rural India (PS18 Track 4). Built with Next.js 16 and connects to the [Backend API](../traderlion-platform-backend/) on port 5000 via session cookies.
 
 ---
 
-## 🛠 Tech Stack
+## Prerequisites
+
+- **Node.js** 20+
+- **Backend** running on port 5000 (see [backend README](../traderlion-platform-backend/README.md))
+
+---
+
+## Tech Stack
 
 | Item | Detail |
 | :--- | :--- |
 | Framework | Next.js 16 (App Router) |
-| Styling | Tailwind CSS v4 |
+| Styling | Tailwind CSS 4 |
 | State | Zustand + TanStack React Query |
 | i18n | `next-intl` (Hindi, Telugu, English) |
 | Validation | Zod |
 | HTTP Client | Axios (custom `@/lib/fetch.client`) |
 | Auth | Cookie-based sessions (`session_id`) |
+| React | 19 |
 | Dev Port | **3000** |
 
 ---
 
-## 🗺 Page Routes
+## Project Structure
 
-### 🔑 Auth — `app/(auth)/`
+```
+app/
+├── (auth)/                # Sign-in, sign-up, password reset
+├── (onboarding)/          # Multi-step onboarding wizard
+├── (platform)/            # Authenticated pages (dashboard, courses, AI tutor)
+├── (payment)/             # Subscription plan picker, success page
+└── api/                   # API routes (auth callbacks)
+
+src/
+├── features/              # Feature modules (domain logic + UI)
+│   ├── academy/           # Course catalogue, lessons, quizzes
+│   ├── account/           # User profile, preferences, theme
+│   ├── assistant/         # AI Tutor chat interface
+│   ├── auth/              # Login, signup, OAuth, password reset
+│   ├── dashboard/         # Home page with progress
+│   ├── onboarding/        # Language, grade, subjects wizard
+│   ├── payment/           # Stripe checkout, plans
+│   └── videos/            # Video browsing
+├── components/ui/         # Shared UI components (Button, TextField, Badge, etc.)
+├── lib/                   # Fetch client, helpers
+├── stores/                # Zustand stores (UI state)
+└── styles/globals.css     # Design tokens (CSS variables)
+```
+
+---
+
+## Page Routes
+
+### Auth — `app/(auth)/`
 
 | URL | Description |
 | :--- | :--- |
@@ -32,13 +68,13 @@ Next.js student web portal for the VidyaSetu platform. Connects to **Backend LMS
 | `/reset-password-required` | Forced reset screen when `PASSWORD_RESET_REQUIRED` error occurs |
 | `/callback` | Google OAuth callback handler (reads `?success=true&isNewUser=...`) |
 
-### 🚀 Onboarding — `app/(onboarding)/`
+### Onboarding — `app/(onboarding)/`
 
 | URL | Description |
 | :--- | :--- |
 | `/onboarding` | Multi-step wizard: language, age, grade, subjects, learning goals |
 
-### 🎓 Platform — `app/(platform)/`
+### Platform — `app/(platform)/`
 
 | URL | Description |
 | :--- | :--- |
@@ -51,7 +87,7 @@ Next.js student web portal for the VidyaSetu platform. Connects to **Backend LMS
 | `/assistant` | AI Tutor chat interface — 4 subject profiles |
 | `/account` | User profile, language preferences, subscription management |
 
-### 💳 Payment — `app/(payment)/`
+### Payment — `app/(payment)/`
 
 | URL | Description |
 | :--- | :--- |
@@ -60,7 +96,7 @@ Next.js student web portal for the VidyaSetu platform. Connects to **Backend LMS
 
 ---
 
-## 🔌 API Calls by Feature
+## API Calls by Feature
 
 All calls go to `NEXT_PUBLIC_API_URL` (default: `http://localhost:5000`).
 
@@ -112,9 +148,9 @@ All calls go to `NEXT_PUBLIC_API_URL` (default: `http://localhost:5000`).
 
 ---
 
-## 🤖 AI Assistant
+## AI Assistant
 
-The `/assistant` page embeds a subject-specific AI tutor chat interface. Profiles are client-side only (no backend call) — they configure the GPT persona.
+The `/assistant` page embeds a subject-specific AI tutor chat interface. Profiles are client-side only (no backend call) — they configure the AI persona.
 
 | Tutor Persona | Subjects |
 | :--- | :--- |
@@ -125,7 +161,7 @@ The `/assistant` page embeds a subject-specific AI tutor chat interface. Profile
 
 ---
 
-## 🔐 Auth Flow
+## Auth Flow
 
 1. User lands → middleware checks `session_id` cookie → redirect to `/sign-in` if missing.
 2. Login/signup → backend sets `session_id` HttpOnly cookie.
@@ -134,7 +170,7 @@ The `/assistant` page embeds a subject-specific AI tutor chat interface. Profile
 
 ---
 
-## 🌐 i18n
+## i18n
 
 `next-intl` with message files in `messages/` supporting:
 - `en` (English)
@@ -145,7 +181,7 @@ Language is user-selected at onboarding and persisted via the backend `preferenc
 
 ---
 
-## ⚙ Environment Variables
+## Environment Variables
 
 | Variable | Default | Description |
 | :--- | :--- | :--- |
@@ -154,29 +190,18 @@ Language is user-selected at onboarding and persisted via the backend `preferenc
 
 ---
 
-## 🚀 Running Locally
+## Running Locally
 
 ```bash
+# 1. Create .env file
+cp .env.example .env
+# Or create manually:
+#   NEXT_PUBLIC_API_URL=http://localhost:5000
+#   NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+# 2. Install and run
 npm install
-npm run dev   # Starts on port 3000
+npm run dev   # Starts on http://localhost:3000
 ```
 
----
-
-## 🚧 GAP ANALYSIS — Web vs. What Exists
-
-Features the **backend has** that the web portal is **fully using**:
-
-| Feature | Status |
-| :--- | :--- |
-| Auth (email/password + Google) | ✅ Full |
-| Password Reset | ✅ Full |
-| Courses + Lessons + Topics | ✅ Full |
-| Quizzes + Questions | ✅ Full |
-| Videos page | ✅ Full |
-| Subscription plans & Stripe checkout | ✅ Full |
-| Stripe billing portal | ✅ Full |
-| Onboarding | ✅ Full |
-| AI Assistant (4 tutors) | ✅ Full |
-
-> The web frontend is the **reference implementation**. When adding features to the Arise mobile app, look here first to understand the expected data shape and UX flow.
+Make sure the backend is running on port 5000 before starting the frontend.
